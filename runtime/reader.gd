@@ -17,7 +17,6 @@ func start():
 	running = true
 	current_node = conversation.nodes[conversation.start_node_id]
 	progress()
-	process_new_node()
 
 
 func progress():
