@@ -20,3 +20,19 @@ func _enter_tree() -> void:
 func _exit_tree() -> void:
 	# Clean-up of the plugin goes here.
 	pass
+
+
+func _has_main_screen():
+	return true
+
+
+func _make_visible(visible):
+	pass
+
+
+func _get_plugin_name():
+	return "Polylogue"
+
+
+func _get_plugin_icon():
+	return EditorInterface.get_editor_theme().get_icon("Node", "EditorIcons")
