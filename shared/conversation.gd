@@ -7,5 +7,4 @@ class_name Conversation
 @export var node_positions: Dictionary[String, Vector2]
 
 @export_group("")
-@export var nodes: Dictionary[String, Resource]
-@export var edges: Dictionary
+@export var nodes: Dictionary[String, PolylogueNodeBase]
