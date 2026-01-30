@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cx30vhvtjd4m3"]
+
+[ext_resource type="Script" uid="uid://kspoaymatdjf" path="res://addons/polylogue/runtime/reader.gd" id="1_fx7a8"]
+
+[node name="Reader" type="Node" unique_id=1608490975]
+script = ExtResource("1_fx7a8")
