@@ -2,7 +2,7 @@
 extends EditorPlugin
 
 
-const MainPanel = preload("res://addons/polylogue/main_panel.tscn")
+const MainPanel = preload("res://addons/polylogue/editor/main_panel.tscn")
 
 var main_panel_instance
 
