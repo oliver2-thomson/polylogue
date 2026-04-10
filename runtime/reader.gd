@@ -3,6 +3,7 @@ class_name Reader
 
 signal exited(reason: String)
 signal node_ready(node: PolylogueNodeBase)
+signal polylogue_signal_emitted(event_name: String, payload: Variant)
 
 @export var conversation: Conversation
 @export var current_node: PolylogueNodeBase
@@ -32,6 +33,11 @@ func advance(input: Variant = null):
 func process_new_node():
 	if current_node is EndNode:
 		exit("Hit Exit node")
+	elif current_node is SignalNode:
+		polylogue_signal_emitted.emit(current_node.signal_name, current_node.payload)
+	
+	if current_node.auto_advance():
+		advance()
 	else:
 		node_ready.emit(current_node)
 
