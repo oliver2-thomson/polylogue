@@ -38,5 +38,5 @@ func process_new_node():
 
 func exit(reason: String):
 	running = false
-	printerr(reason)
+	print(reason)
 	exited.emit(reason)
