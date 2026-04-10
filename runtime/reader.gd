@@ -16,31 +16,18 @@ func start():
 	
 	running = true
 	current_node = conversation.nodes[conversation.start_node_id]
-	progress()
+	advance()
 
 
-func progress():
-	if current_node is SingleNextNode:
-		current_node = conversation.nodes[current_node.next_id]
-		if current_node == null:
-			exit("Encountered invalid node")
-			return
+func advance(input: Variant = null):
+	var result: int = current_node.advance(input)
+	if result == -1:
+		printerr("advance failed to resolve")
 	else:
-		printerr("progress called on node that does not inherit from SingleNextNode")
-	
+		current_node = conversation.nodes[result]
 	process_new_node()
 	
-func choose_option(option: int):
-	if current_node is OptionNode:
-		var option_chosen: BranchOption = current_node.options[option]
-		if option_chosen != null:
-			current_node = conversation.nodes[option_chosen.next_id]
-		else:
-			printerr("Option out of bounds chosen")
-	else:
-		printerr("choose_option called on node that does not inherit from OptionNode")
-		
-	process_new_node()
+
 
 func process_new_node():
 	if current_node is EndNode:
