@@ -1,3 +1,5 @@
+@tool
+
 extends SingleNextNode
 class_name LineNode
 
