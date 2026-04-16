@@ -32,3 +32,5 @@ grow_horizontal = 2
 [node name="Label" type="Label" parent="DoNotDestroy/PanelContainer" unique_id=1673892021]
 layout_mode = 2
 text = "Test"
+
+[connection signal="node_selected" from="." to="." method="_on_node_selected"]

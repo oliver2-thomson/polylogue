@@ -18,3 +18,6 @@ func advance(input: Variant = null) -> int:
 		return -1
 		
 	return options[index].next_id
+
+func get_output_slots() -> int:
+	return len(options)

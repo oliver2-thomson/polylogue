@@ -31,3 +31,7 @@ func clear():
 	for child in get_children():
 		if exempt_from_clear.has(child.name): continue
 		child.free()
+
+
+func _on_node_selected(node: Node) -> void:
+	pass
