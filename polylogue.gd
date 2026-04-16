@@ -2,9 +2,9 @@
 extends EditorPlugin
 
 
-const MainPanel = preload("res://addons/polylogue/editor/main_panel.tscn")
+const MainPanel = preload("res://addons/polylogue/editor/polylogue_main_panel.tscn")
 
-var main_panel_instance
+var main_panel_instance: PolylogueMainPanel
 
 func _enable_plugin() -> void:
 	# Add autoloads here.
@@ -45,3 +45,11 @@ func _get_plugin_name():
 func _get_plugin_icon():
 	# Must return some kind of Texture for the icon.
 	return EditorInterface.get_editor_theme().get_icon("Node", "EditorIcons")
+
+func _handles(object: Object) -> bool:
+	return object is Conversation
+	
+func _edit(object: Object) -> void:
+	if object is Conversation:
+		main_panel_instance.set_conversation(object)
+		_make_visible(true)
