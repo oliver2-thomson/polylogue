@@ -21,3 +21,9 @@ func get_input_slots() -> int:
 
 func get_output_slots() -> int:
 	return 1
+	
+func get_output_destinations() -> Array[int]:
+	return []
+	
+func set_position(_posiiton: Vector2):
+	position = _posiiton

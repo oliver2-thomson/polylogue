@@ -21,3 +21,11 @@ func advance(input: Variant = null) -> int:
 
 func get_output_slots() -> int:
 	return len(options)
+	
+func get_output_destinations() -> Array[int]:
+	var result: Array[int]
+
+	for branch_option in options:
+		result.append(branch_option.next_id)
+
+	return result

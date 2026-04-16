@@ -4,6 +4,7 @@ extends GraphEdit
 class_name PolylogueMainPanel
 
 var conversation: Conversation
+var nodes: Dictionary[int, PolylogueGraphNode]
 
 @onready var label: Label = $DoNotDestroy/PanelContainer/Label
 
@@ -19,12 +20,17 @@ func redraw():
 	
 	label.text = conversation.title
 	
-	for node in conversation.nodes.values():
-		var graph_node = PolylogueGraphNode.new()
-		graph_node.set_conversation_node(node)
-		add_child(graph_node)
-		print("Added node")
-	
+	for key in conversation.nodes:
+		var node = PolylogueGraphNode.new(conversation.nodes[key])
+		nodes[key] = node
+		add_child(node)
+		
+		
+	for node in nodes.keys():
+		var connections = conversation.nodes[node].get_output_destinations()
+		for connection in range(len(connections)):
+			connect_node(nodes[node].name, connection, nodes[connections[connection]].name, 0)
+
 func clear():
 	label.text = ""
 	clear_connections()
@@ -34,4 +40,4 @@ func clear():
 
 
 func _on_node_selected(node: Node) -> void:
-	pass
+	EditorInterface.edit_node(node)

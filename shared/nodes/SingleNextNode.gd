@@ -10,3 +10,6 @@ func set_next_id(id: int):
 
 func advance(input: Variant = null) -> int:
 	return next_id
+	
+func get_output_destinations() -> Array[int]:
+	return [next_id]
