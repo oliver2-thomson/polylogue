@@ -26,6 +26,9 @@ func get_output_destinations() -> Array[int]:
 	var result: Array[int]
 
 	for branch_option in options:
-		result.append(branch_option.next_id)
+		if branch_option != null:
+			result.append(branch_option.next_id)
+		else:
+			result.append(-1)
 
 	return result

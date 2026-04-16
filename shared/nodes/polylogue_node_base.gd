@@ -3,11 +3,14 @@
 extends Resource
 class_name PolylogueNodeBase
 
-@export var uid: int
-@export var position: Vector2 = Vector2(0, 0)
+var uid: int
+var position: Vector2 = Vector2(0, 0)
 
 func set_uid(id: int):
 	uid = id
+	
+func get_uid() -> int:
+	return uid
 	
 func advance(input: Variant = null) -> int:
 	push_error("respond() not implemented for %s" % get_class())

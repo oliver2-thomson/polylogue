@@ -29,7 +29,8 @@ func redraw():
 	for node in nodes.keys():
 		var connections = conversation.nodes[node].get_output_destinations()
 		for connection in range(len(connections)):
-			connect_node(nodes[node].name, connection, nodes[connections[connection]].name, 0)
+			if connections[connection] != -1:
+				connect_node(nodes[node].name, connection, nodes[connections[connection]].name, 0)
 
 func clear():
 	label.text = ""
