@@ -40,7 +40,8 @@ func clear():
 
 
 func _on_node_selected(node: Node) -> void:
-	EditorInterface.edit_node(node)
+	if node is PolylogueGraphNode:
+		EditorInterface.edit_resource(node.conversation_node)
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
