@@ -21,3 +21,6 @@ func _init(_conversation_node: PolylogueNodeBase):
 		set_slot_enabled_left(i, true)
 	for i in range(conversation_node.get_output_slots()):
 		set_slot_enabled_right(i, true)
+		
+func save():
+	conversation_node.position = position_offset
