@@ -31,7 +31,9 @@ func redraw():
 		add_child(node)
 
 	print("Nodes: {0}".format([nodes]))
+	print("Comversation.Nodes: {0}".format([conversation.nodes]))
 	for node in nodes.keys():
+		print("node: {0} -> {1}".format([node, conversation.nodes.get(node)]))
 		var connections = conversation.nodes.get(node).get_output_slots()
 		for connection in range(len(connections)):
 			if connections[connection] != -1 && nodes.keys().has(connections[connection]):
@@ -40,6 +42,7 @@ func redraw():
 func clear():
 	label.text = ""
 	clear_connections()
+	nodes.clear()
 	for child in get_children():
 		if exempt_from_clear.has(child.name): continue
 		child.free()
