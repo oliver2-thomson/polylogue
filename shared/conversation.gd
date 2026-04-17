@@ -26,3 +26,7 @@ func add_node(node: PolylogueNodeBase) -> int:
 	node.set_uid(id)
 	nodes[id] = node
 	return id
+
+func save():
+	# print("Saving conversation")
+	ResourceSaver.save(self, resource_path)

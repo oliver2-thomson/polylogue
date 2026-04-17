@@ -57,6 +57,7 @@ func _input(event: InputEvent) -> void:
 		if event.keycode == KEY_S && event.is_command_or_control_pressed():
 			for node in nodes.values():
 				node.save()
+			conversation.save()
 
 
 func _on_connection_to_empty(from_node: StringName, from_port: int, release_position: Vector2) -> void:
