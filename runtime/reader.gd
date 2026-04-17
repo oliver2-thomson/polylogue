@@ -21,6 +21,7 @@ func start():
 
 
 func advance(input: Variant = null):
+	print(current_node.uid)
 	var result: int = current_node.advance(input)
 	if result == -1:
 		printerr("advance failed to resolve")
