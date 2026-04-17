@@ -3,8 +3,11 @@
 extends Resource
 class_name PolylogueNodeBase
 
-var uid: int
+@export var uid: int
 var position: Vector2 = Vector2(0, 0)
+
+@export var input_slots: Array[int] = [0]
+@export var output_slots: Array[int] = [0]
 
 func set_uid(id: int):
 	uid = id
@@ -19,14 +22,18 @@ func advance(input: Variant = null) -> int:
 func auto_advance() -> bool:
 	return false
 
-func get_input_slots() -> int:
-	return 1
+func get_input_slots() -> Array[int]:
+	return input_slots
 
-func get_output_slots() -> int:
-	return 1
-	
-func get_output_destinations() -> Array[int]:
-	return []
+func get_output_slots() -> Array[int]:
+	return output_slots
 	
 func set_position(_posiiton: Vector2):
 	position = _posiiton
+
+func set_output_slot(index: int, destination: int):
+	if index >= len(output_slots): 
+		printerr("out of bounds assignment for output slot")
+		return
+	
+	output_slots[index] = destination

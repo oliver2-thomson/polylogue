@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bgnog7yranihj"]
 
 [ext_resource type="Script" uid="uid://c34ytj524xx0i" path="res://addons/polylogue/editor/polylogue_main_panel.gd" id="1_u0pld"]
+[ext_resource type="PackedScene" uid="uid://bm74g4odmg7wq" path="res://addons/polylogue/editor/node_selector.tscn" id="2_hkdgk"]
 
 [node name="GraphEdit" type="GraphEdit" unique_id=1976073554]
 anchors_preset = 15
@@ -33,4 +34,9 @@ grow_horizontal = 2
 layout_mode = 2
 text = "Test"
 
+[node name="NodeSelector" parent="DoNotDestroy" unique_id=1067495407 instance=ExtResource("2_hkdgk")]
+layout_mode = 0
+
+[connection signal="connection_to_empty" from="." to="." method="_on_connection_to_empty"]
 [connection signal="node_selected" from="." to="." method="_on_node_selected"]
+[connection signal="node_chosen" from="DoNotDestroy/NodeSelector" to="." method="_on_node_selector_node_chosen"]

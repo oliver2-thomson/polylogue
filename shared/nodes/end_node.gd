@@ -3,5 +3,5 @@
 extends PolylogueNodeBase
 class_name EndNode
 
-func get_output_slots() -> int:
-	return 0
+func _init() -> void:
+	output_slots = [-1]

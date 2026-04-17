@@ -5,7 +5,7 @@ class_name OptionNode
 
 @export var character: Character
 @export var line: String
-@export var options: Array[BranchOption]
+@export var options: Array[String]
 
 func advance(input: Variant = null) -> int:
 	if typeof(input) != TYPE_INT:
@@ -17,18 +17,4 @@ func advance(input: Variant = null) -> int:
 		printerr("Option index out of bounds")
 		return -1
 		
-	return options[index].next_id
-
-func get_output_slots() -> int:
-	return len(options)
-	
-func get_output_destinations() -> Array[int]:
-	var result: Array[int]
-
-	for branch_option in options:
-		if branch_option != null:
-			result.append(branch_option.next_id)
-		else:
-			result.append(-1)
-
-	return result
+	return output_slots[index]

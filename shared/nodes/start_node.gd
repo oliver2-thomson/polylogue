@@ -3,5 +3,5 @@
 extends SingleNextNode
 class_name StartNode
 
-func get_input_slots() -> int:
-	return 0
+func _init() -> void:
+	input_slots = [-1]
