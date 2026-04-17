@@ -80,15 +80,17 @@ func _on_node_selector_node_chosen(node_key: String, state: Dictionary) -> void:
 	
 	node_instance.position = state.get("release_position")
 	
-	var from_graph_node: PolylogueGraphNode
-	
-	var nodes_in_graph = get_children()
-	for node_in_graph in nodes_in_graph:
-		if node_in_graph.name == state.get("from_node"):
-			from_graph_node = node_in_graph
-			var from_node_instance: PolylogueNodeBase = from_graph_node.conversation_node
-			from_node_instance.set_output_slot(state.get("from_port"), node_index)
-	
+	var from_graph_node: PolylogueGraphNode = _get_graph_node_by_from_node(state.get("from_node"))
+	var from_node_instance: PolylogueNodeBase = from_graph_node.conversation_node
+	from_node_instance.set_output_slot(state.get("from_port"), node_index)
+
 	redraw()
 	
-	
+# Make this more optimised later
+func _get_graph_node_by_from_node(from_node: StringName) -> PolylogueGraphNode:
+	var nodes_in_graph = get_children()
+	for node in nodes_in_graph:
+		if node.name == from_node:
+			return node
+	printerr("Graph node not found: {0}".format([from_node]))
+	return null
