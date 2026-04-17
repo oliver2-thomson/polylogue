@@ -26,7 +26,10 @@ func advance(input: Variant = null):
 	if result == -1:
 		printerr("advance failed to resolve")
 	else:
-		current_node = conversation.nodes[result]
+		if conversation.nodes.has(result):
+			current_node = conversation.nodes[result]
+		else:
+			printerr("current node has advanced to node that doesnt exist: {0}".format([result]))
 	process_new_node()
 	
 
