@@ -34,4 +34,11 @@ func get_state():
 func choose_node_to_spawn(_state: Dictionary):
 	show()
 	show_popup()
+	grab_focus()
 	state = _state
+
+
+func _on_toggled(toggled_on: bool) -> void:
+	if !toggled_on:
+		hide()
+		state = {}
