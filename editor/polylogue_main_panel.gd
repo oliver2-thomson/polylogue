@@ -51,7 +51,7 @@ func clear():
 		if exempt_from_clear.has(child.name): continue
 		if child is PolylogueGraphNode:
 			child.conversation_node.request_redraw.disconnect(redraw)
-		child.free()
+		child.queue_free()
 
 
 func _on_node_selected(node: Node) -> void:
