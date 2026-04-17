@@ -3,6 +3,8 @@
 extends Resource
 class_name PolylogueNodeBase
 
+signal request_redraw()
+
 @export var uid: int
 var position: Vector2 = Vector2(0, 0)
 
@@ -37,3 +39,6 @@ func set_output_slot(index: int, destination: int):
 		return
 	
 	output_slots[index] = destination
+
+func add_custom_controls() -> Control:
+	return null

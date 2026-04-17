@@ -5,7 +5,23 @@ class_name OptionNode
 
 @export var character: Character
 @export var line: String
-@export var options: Array[String]
+@export var options: Array[String] = [""]
+
+func add_custom_controls() -> Control:
+	var custom_controls = HBoxContainer.new()
+	
+	var left_button = Button.new()
+	left_button.text = "-"
+	left_button.pressed.connect(increment_options.bind(-1))
+	
+	var right_button = Button.new()
+	right_button.text = "+"
+	right_button.pressed.connect(increment_options.bind(1))
+	
+	custom_controls.add_child(left_button)
+	custom_controls.add_child(right_button)
+	
+	return custom_controls
 
 func advance(input: Variant = null) -> int:
 	if typeof(input) != TYPE_INT:
@@ -18,3 +34,30 @@ func advance(input: Variant = null) -> int:
 		return -1
 		
 	return output_slots[index]
+
+func increment_options(amount: int):
+	while amount != 0:
+		if amount > 0:
+			output_slots.append(0)
+			amount -= 1
+		elif amount < 0:
+			if len(output_slots) < 1:
+				output_slots = [0]
+				amount = 0
+			elif len(output_slots) == 1:
+				amount = 0
+			elif len(output_slots) > 1:
+				output_slots.pop_back()
+				amount += 1
+				
+				
+	equalise_options()
+	request_redraw.emit()
+				
+func equalise_options():
+	options = options.slice(0, len(output_slots))
+				
+				
+				
+				
+				

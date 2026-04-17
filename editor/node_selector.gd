@@ -41,4 +41,3 @@ func choose_node_to_spawn(_state: Dictionary):
 func _on_toggled(toggled_on: bool) -> void:
 	if !toggled_on:
 		hide()
-		state = {}

@@ -37,8 +37,8 @@ text = "Test"
 [node name="NodeSelector" parent="DoNotDestroy" unique_id=1067495407 instance=ExtResource("2_hkdgk")]
 visible = false
 layout_mode = 0
-text = "Select Node Type"
 
+[connection signal="connection_request" from="." to="." method="_on_connection_request"]
 [connection signal="connection_to_empty" from="." to="." method="_on_connection_to_empty"]
 [connection signal="node_selected" from="." to="." method="_on_node_selected"]
 [connection signal="node_chosen" from="DoNotDestroy/NodeSelector" to="." method="_on_node_selector_node_chosen"]
