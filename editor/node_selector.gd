@@ -22,6 +22,7 @@ func _refresh_options():
 	options = PolylogueInterface.instantiable_node_types
 
 func _popup_id_pressed(id: int):
+	hide()
 	node_chosen.emit(options.keys()[id], state)
 	
 func store_state(dict: Dictionary):
@@ -31,5 +32,6 @@ func get_state():
 	return state
 	
 func choose_node_to_spawn(_state: Dictionary):
+	show()
 	show_popup()
 	state = _state

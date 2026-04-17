@@ -30,6 +30,7 @@ func redraw():
 		nodes[key] = node
 		add_child(node)
 
+	print("Nodes: {0}".format([nodes]))
 	for node in nodes.keys():
 		var connections = conversation.nodes.get(node).get_output_slots()
 		for connection in range(len(connections)):
