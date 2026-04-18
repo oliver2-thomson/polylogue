@@ -55,9 +55,22 @@ func increment_options(amount: int):
 	request_redraw.emit()
 				
 func equalise_options():
-	options = options.slice(0, len(output_slots))
+	print("Start -> len(options): {0}, len(output_slots): {1}".format([len(options), len(output_slots)]))
+	if len(options) > len(output_slots):
+		options = options.slice(0, len(output_slots))
+	elif len(options) < len(output_slots):
+		for i in range(len(output_slots) - len(options)):
+			options.append("")
 				
 				
+	print("End -> len(options): {0}, len(output_slots): {1}".format([len(options), len(output_slots)]))
 				
 				
-				
+func add_inline_controls(index: int) -> Control:
+	var line_edit = LineEdit.new()
+	line_edit.text_changed.connect(_set_option.bind(index))
+	return line_edit
+	
+func _set_option(value: String, index: int):
+	if index < len(options):
+		options[index] = value

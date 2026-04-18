@@ -30,9 +30,7 @@ func redraw():
 		nodes[key] = node
 		add_child(node)
 		node.conversation_node.request_redraw.connect(redraw)
-		var custom_control = node.conversation_node.add_custom_controls()
-		if custom_control != null:
-			node.add_child(custom_control)
+		
 
 	#print("Nodes: {0}".format([nodes]))
 	#print("Comversation.Nodes: {0}".format([conversation.nodes]))

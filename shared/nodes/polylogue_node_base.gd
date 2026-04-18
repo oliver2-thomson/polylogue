@@ -42,3 +42,6 @@ func set_output_slot(index: int, destination: int):
 
 func add_custom_controls() -> Control:
 	return null
+	
+func add_inline_controls(index: int) -> Control:
+	return null

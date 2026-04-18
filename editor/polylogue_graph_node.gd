@@ -14,7 +14,8 @@ func _init(_conversation_node: PolylogueNodeBase):
 	var max = max(len(conversation_node.get_input_slots()), len(conversation_node.get_output_slots()))
 	
 	for i in range(max):
-		var control = Label.new()
+		var control = conversation_node.add_inline_controls(i)
+		if control == null: control = Label.new()
 		add_child(control)
 		
 	for i in len(conversation_node.get_input_slots()):
@@ -22,5 +23,10 @@ func _init(_conversation_node: PolylogueNodeBase):
 	for i in len(conversation_node.get_output_slots()):
 		if conversation_node.get_output_slots()[i] != -1: set_slot_enabled_right(i, true)
 		
+	var custom_control = conversation_node.add_custom_controls()
+	if custom_control != null:
+		add_child(custom_control)
+		
+
 func save():
 	conversation_node.set_position(position_offset)
