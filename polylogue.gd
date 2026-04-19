@@ -9,11 +9,10 @@ static var instantiable_node_types: Dictionary = {}
 var global_class_list: Array[Dictionary] = []
 
 func _enable_plugin() -> void:
-	EditorInterface.get_resource_filesystem().script_classes_updated.connect(_update_instantiable_node_types)
-	_update_instantiable_node_types()
+	pass
 
 func _disable_plugin() -> void:
-	EditorInterface.get_resource_filesystem().script_classes_updated.disconnect(_update_instantiable_node_types)
+	pass
 
 
 func _enter_tree() -> void:
@@ -22,9 +21,14 @@ func _enter_tree() -> void:
 	EditorInterface.get_editor_main_screen().add_child(main_panel_instance)
 	# Hide the main panel. Very much required.
 	_make_visible(false)
+	
+	EditorInterface.get_resource_filesystem().script_classes_updated.connect(_update_instantiable_node_types)
+	_update_instantiable_node_types()
 
 
 func _exit_tree() -> void:
+	EditorInterface.get_resource_filesystem().script_classes_updated.disconnect(_update_instantiable_node_types)
+	
 	if main_panel_instance:
 		main_panel_instance.queue_free()
 
