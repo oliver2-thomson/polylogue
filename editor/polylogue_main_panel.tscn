@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://bgnog7yranihj"]
+
+[ext_resource type="Script" uid="uid://c34ytj524xx0i" path="res://addons/polylogue/editor/polylogue_main_panel.gd" id="1_u0pld"]
+[ext_resource type="PackedScene" uid="uid://bm74g4odmg7wq" path="res://addons/polylogue/editor/node_selector.tscn" id="2_hkdgk"]
+
+[node name="GraphEdit" type="GraphEdit" unique_id=1976073554]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_u0pld")
+
+[node name="DoNotDestroy" type="Control" parent="." unique_id=815207407]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="DoNotDestroy" unique_id=1715752343]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="DoNotDestroy/PanelContainer" unique_id=1673892021]
+layout_mode = 2
+text = "Test"
+
+[node name="NodeSelector" parent="DoNotDestroy" unique_id=1067495407 instance=ExtResource("2_hkdgk")]
+visible = false
+layout_mode = 0
+
+[connection signal="connection_request" from="." to="." method="_on_connection_request"]
+[connection signal="connection_to_empty" from="." to="." method="_on_connection_to_empty"]
+[connection signal="node_selected" from="." to="." method="_on_node_selected"]
+[connection signal="node_chosen" from="DoNotDestroy/NodeSelector" to="." method="_on_node_selector_node_chosen"]

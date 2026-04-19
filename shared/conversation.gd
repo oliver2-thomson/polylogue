@@ -6,7 +6,6 @@ class_name Conversation
 @export_group("Metadata")
 @export var title: String
 @export var start_node_id: int
-@export var node_positions: Dictionary[int, Vector2]
 
 @export_group("")
 @export var nodes: Dictionary[int, PolylogueNodeBase]
@@ -27,3 +26,7 @@ func add_node(node: PolylogueNodeBase) -> int:
 	node.set_uid(id)
 	nodes[id] = node
 	return id
+
+func save():
+	# print("Saving conversation")
+	ResourceSaver.save(self, resource_path)
