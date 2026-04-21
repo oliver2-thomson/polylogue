@@ -68,6 +68,7 @@ func equalise_options():
 				
 func add_inline_controls(index: int) -> Control:
 	var line_edit = LineEdit.new()
+	line_edit.text = options[index]
 	line_edit.text_changed.connect(_set_option.bind(index))
 	return line_edit
 	
