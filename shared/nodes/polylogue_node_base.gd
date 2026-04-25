@@ -18,8 +18,8 @@ func get_uid() -> int:
 	return uid
 	
 func advance(input: Variant = null) -> int:
-	push_error("respond() not implemented for %s" % get_class())
-	return -1
+	print(output_slots)
+	return output_slots[0]
 
 func auto_advance() -> bool:
 	return false
@@ -45,3 +45,6 @@ func add_custom_controls() -> Control:
 	
 func add_inline_controls(index: int) -> Control:
 	return null
+
+func open_inspector_on_select():
+	return false

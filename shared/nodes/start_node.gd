@@ -1,6 +1,6 @@
 @tool
 
-extends SingleNextNode
+extends PolylogueNodeBase
 class_name StartNode
 
 func _init() -> void:

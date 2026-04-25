@@ -1,6 +1,6 @@
 @tool
 
-extends SingleNextNode
+extends PolylogueNodeBase
 class_name SignalNode
 
 @export var signal_name: String = ""
@@ -22,3 +22,6 @@ func add_custom_controls() -> Control:
 
 func change_signal_name(_signal_name: String):
 	signal_name = _signal_name
+	
+func open_inspector_on_select():
+	return true

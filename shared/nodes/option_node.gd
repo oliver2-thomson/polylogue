@@ -1,14 +1,18 @@
 @tool
 
-extends PolylogueNodeBase
+extends LineNode
 class_name OptionNode
 
-@export var character: Character
-@export var line: String
 @export var options: Array[String] = [""]
 
 func add_custom_controls() -> Control:
-	var custom_controls = HBoxContainer.new()
+	var parent_class_controls: Control = super.add_custom_controls()
+	var controls := VBoxContainer.new()
+	
+	if parent_class_controls:
+		controls.add_child(parent_class_controls)
+		
+	var button_box := HBoxContainer.new()
 	
 	var left_button = Button.new()
 	left_button.text = "-"
@@ -18,10 +22,12 @@ func add_custom_controls() -> Control:
 	right_button.text = "+"
 	right_button.pressed.connect(increment_options.bind(1))
 	
-	custom_controls.add_child(left_button)
-	custom_controls.add_child(right_button)
+	button_box.add_child(left_button)
+	button_box.add_child(right_button)
 	
-	return custom_controls
+	controls.add_child(button_box)
+	
+	return controls
 
 func advance(input: Variant = null) -> int:
 	if typeof(input) != TYPE_INT:

@@ -1,21 +1,25 @@
 @tool
 
-extends SingleNextNode
+extends SpeechNode
 class_name LineNode
 
-@export var character: Character
 @export var line: String
 
 func add_custom_controls() -> Control:
-	var panel = PanelContainer.new()
+	var parent_class_controls: Control = super.add_custom_controls()
+	var controls := VBoxContainer.new()
+	
+	if parent_class_controls:
+		controls.add_child(parent_class_controls)
+	
 	var text_area = LineEdit.new()
 	text_area.custom_minimum_size = Vector2(500, 100)
 	text_area.text = line
 	text_area.text_changed.connect(change_line)
 
-	panel.add_child(text_area)
+	controls.add_child(text_area)
 	
-	return panel
+	return controls
 	
 	
 func change_line(_line: String):
