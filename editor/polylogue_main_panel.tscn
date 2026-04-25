@@ -10,6 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+minimap_enabled = false
 script = ExtResource("1_u0pld")
 
 [node name="DoNotDestroy" type="Control" parent="." unique_id=815207407]
@@ -40,5 +41,7 @@ layout_mode = 0
 
 [connection signal="connection_request" from="." to="." method="_on_connection_request"]
 [connection signal="connection_to_empty" from="." to="." method="_on_connection_to_empty"]
+[connection signal="delete_nodes_request" from="." to="." method="_on_delete_nodes_request"]
+[connection signal="node_deselected" from="." to="." method="_on_node_deselected"]
 [connection signal="node_selected" from="." to="." method="_on_node_selected"]
 [connection signal="node_chosen" from="DoNotDestroy/NodeSelector" to="." method="_on_node_selector_node_chosen"]
