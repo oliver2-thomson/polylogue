@@ -74,7 +74,7 @@ func _on_connection_to_empty(from_node: StringName, from_port: int, release_posi
 	node_selector.choose_node_to_spawn({
 		"from_node": from_node,
 		"from_port": from_port,
-		"release_position": release_position + scroll_offset
+		"release_position": (release_position + scroll_offset) / zoom
 	})
 
 
