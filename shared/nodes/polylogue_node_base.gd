@@ -43,10 +43,7 @@ func set_output_slot(index: int, destination: int):
 	output_slots[index] = destination
 
 func add_custom_controls() -> Control:
-	var delete_button := Button.new()
-	delete_button.text = "Delete Node"
-	delete_button.pressed.connect(request_delete.emit.bind(uid))
-	return delete_button
+	return null
 	
 func add_inline_controls(index: int) -> Control:
 	return null

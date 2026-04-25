@@ -136,12 +136,13 @@ func _on_delete_nodes_request(nodes: Array[StringName]) -> void:
 	# print("Deleting {0} nodes".format([len(nodes)]))
 	for deleted_node in nodes:
 		var deleted_graph_node = _get_graph_node_by_string_name(deleted_node)
+		if deleted_graph_node.conversation_node is StartNode: return
 		var connections_list := get_connection_list_from_node(deleted_node)
 		for connection in connections_list:
 			if connection.get("to_node") == deleted_node:
 				var from_graph_node = _get_graph_node_by_string_name(connection.get("from_node"))
 				if from_graph_node:
 					from_graph_node.conversation_node.set_output_slot(connection.get("from_port"), 0)
-					conversation.remove_node(deleted_graph_node.conversation_node.uid)
+		conversation.remove_node(deleted_graph_node.conversation_node.uid)
 	redraw()
 					

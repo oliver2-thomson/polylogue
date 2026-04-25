@@ -24,6 +24,16 @@ func _enter_tree() -> void:
 	
 	EditorInterface.get_resource_filesystem().script_classes_updated.connect(_update_instantiable_node_types)
 	_update_instantiable_node_types()
+	
+	var action := "ui_graph_delete"
+
+	if InputMap.has_action(action):
+		var backspace_event := InputEventKey.new()
+		backspace_event.keycode = KEY_BACKSPACE
+
+		# Avoid duplicate bindings
+		if not InputMap.action_has_event(action, backspace_event):
+			InputMap.action_add_event(action, backspace_event)
 
 
 func _exit_tree() -> void:
