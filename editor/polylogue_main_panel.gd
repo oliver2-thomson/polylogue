@@ -57,6 +57,7 @@ func clear():
 func _on_node_selected(node: Node) -> void:
 	if node is PolylogueGraphNode:
 		EditorInterface.edit_resource(node.conversation_node)
+		# EditorInterface.edit_node(node)
 	
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
@@ -71,7 +72,7 @@ func _on_connection_to_empty(from_node: StringName, from_port: int, release_posi
 	node_selector.choose_node_to_spawn({
 		"from_node": from_node,
 		"from_port": from_port,
-		"release_position": release_position
+		"release_position": release_position + scroll_offset
 	})
 
 
