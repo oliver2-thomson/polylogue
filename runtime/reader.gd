@@ -11,6 +11,10 @@ signal polylogue_signal_emitted(event_name: String, payload: Variant)
 
 
 func start():
+	if conversation == null:
+		printerr("Start called with no conversation set")
+		return
+	
 	if conversation.start_node_id == 0:
 		exit("Invalid starting node")
 		return

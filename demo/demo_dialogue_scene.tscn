@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://ck4y4jak4seu"]
+
+[ext_resource type="Script" uid="uid://cfke4hwgiyym0" path="res://addons/polylogue/demo/demo_dialogue_scene.gd" id="1_412ll"]
+[ext_resource type="Script" uid="uid://kspoaymatdjf" path="res://addons/polylogue/runtime/reader.gd" id="2_hh3yj"]
+[ext_resource type="Resource" uid="uid://dd2e5hrudrele" path="res://conversations/new_resource.tres" id="3_hh3yj"]
+
+[node name="DemoDialogueScene" type="Control" unique_id=780848337]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_412ll")
+
+[node name="Reader" type="Node" parent="." unique_id=818141821]
+script = ExtResource("2_hh3yj")
+conversation = ExtResource("3_hh3yj")
+metadata/_custom_type_script = "uid://kspoaymatdjf"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1506486893]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="DialoguePlayingContainer" type="VBoxContainer" parent="VBoxContainer" unique_id=236726965]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/DialoguePlayingContainer" unique_id=606370320]
+layout_mode = 2
+
+[node name="CharacterNameLabel" type="Label" parent="VBoxContainer/DialoguePlayingContainer/HBoxContainer" unique_id=1708699119]
+layout_mode = 2
+text = "test"
+
+[node name="DialogueLineLabel" type="Label" parent="VBoxContainer/DialoguePlayingContainer/HBoxContainer" unique_id=1334348659]
+layout_mode = 2
+text = "test"
+
+[node name="OptionsContainer" type="VBoxContainer" parent="VBoxContainer/DialoguePlayingContainer/HBoxContainer" unique_id=1645307840]
+layout_mode = 2
+
+[node name="AdvanceDialogueButton" type="Button" parent="VBoxContainer/DialoguePlayingContainer" unique_id=1806487454]
+layout_mode = 2
+text = "Advance dialogue"
+
+[node name="PlayDialogueButton" type="Button" parent="VBoxContainer" unique_id=232339928]
+layout_mode = 2
+text = "Play dialogue"
+
+[connection signal="exited" from="Reader" to="." method="_on_reader_exited"]
+[connection signal="node_ready" from="Reader" to="." method="_on_reader_node_ready"]
+[connection signal="polylogue_signal_emitted" from="Reader" to="." method="_on_reader_polylogue_signal_emitted"]
+[connection signal="pressed" from="VBoxContainer/DialoguePlayingContainer/AdvanceDialogueButton" to="." method="_on_advance_dialogue_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/PlayDialogueButton" to="." method="_on_play_dialogue_button_pressed"]
