@@ -26,7 +26,11 @@ func add_node(node: PolylogueNodeBase) -> int:
 	node.set_uid(id)
 	nodes[id] = node
 	return id
+	
+func remove_node(index: int):
+	nodes.erase(index)
 
 func save():
 	# print("Saving conversation")
-	ResourceSaver.save(self, resource_path)
+	if resource_path: # Stops from trying to save before the resource has a path during creation
+		ResourceSaver.save(self, resource_path)

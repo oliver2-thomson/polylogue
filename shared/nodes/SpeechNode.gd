@@ -1,4 +1,5 @@
 @tool
+@abstract
 
 extends PolylogueNodeBase
 class_name SpeechNode

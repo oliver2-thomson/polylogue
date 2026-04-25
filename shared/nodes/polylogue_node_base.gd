@@ -1,9 +1,11 @@
 @tool
+@abstract
 
 extends Resource
 class_name PolylogueNodeBase
 
 signal request_redraw()
+signal request_delete(_uid: int)
 
 @export var uid: int
 @export var position: Vector2 = Vector2(0, 0)
@@ -41,7 +43,10 @@ func set_output_slot(index: int, destination: int):
 	output_slots[index] = destination
 
 func add_custom_controls() -> Control:
-	return null
+	var delete_button := Button.new()
+	delete_button.text = "Delete Node"
+	delete_button.pressed.connect(request_delete.emit.bind(uid))
+	return delete_button
 	
 func add_inline_controls(index: int) -> Control:
 	return null

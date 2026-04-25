@@ -69,7 +69,7 @@ func equalise_options():
 			options.append("")
 				
 				
-	print("End -> len(options): {0}, len(output_slots): {1}".format([len(options), len(output_slots)]))
+	# print("End -> len(options): {0}, len(output_slots): {1}".format([len(options), len(output_slots)]))
 				
 				
 func add_inline_controls(index: int) -> Control:

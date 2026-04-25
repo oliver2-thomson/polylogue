@@ -4,7 +4,7 @@ extends GraphEdit
 class_name PolylogueMainPanel
 
 var conversation: Conversation
-var nodes: Dictionary[int, PolylogueGraphNode]
+var nodes_dict: Dictionary[int, PolylogueGraphNode]
 
 @onready var label: Label = $DoNotDestroy/PanelContainer/Label
 @onready var node_selector: NodeSelector = $DoNotDestroy/NodeSelector
@@ -29,28 +29,30 @@ func redraw():
 	
 	for key in conversation.nodes:
 		var node = PolylogueGraphNode.new(conversation.nodes[key])
-		nodes[key] = node
+		nodes_dict[key] = node
 		add_child(node)
 		node.conversation_node.request_redraw.connect(redraw)
+		node.conversation_node.request_delete.connect(_delete_single_node)
 		
 
 	#print("Nodes: {0}".format([nodes]))
 	#print("Comversation.Nodes: {0}".format([conversation.nodes]))
-	for node in nodes.keys():
+	for node in nodes_dict.keys():
 		# print("node: {0} -> {1}".format([node, conversation.nodes.get(node)]))
 		var connections = conversation.nodes.get(node).get_output_slots()
 		for connection in range(len(connections)):
-			if connections[connection] != -1 && nodes.keys().has(connections[connection]):
-				connect_node(nodes[node].name, connection, nodes[connections[connection]].name, 0)
+			if connections[connection] != -1 && nodes_dict.keys().has(connections[connection]):
+				connect_node(nodes_dict[node].name, connection, nodes_dict[connections[connection]].name, 0)
 	
 func clear():
 	label.text = ""
 	clear_connections()
-	nodes.clear()
+	nodes_dict.clear()
 	for child in get_children():
 		if exempt_from_clear.has(child.name): continue
 		if child is PolylogueGraphNode:
 			child.conversation_node.request_redraw.disconnect(redraw)
+			child.conversation_node.request_delete.disconnect(_delete_single_node)
 		child.queue_free()
 
 
@@ -63,8 +65,7 @@ func _on_node_selected(node: Node) -> void:
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.keycode == KEY_S && event.is_command_or_control_pressed():
-			save()
-			
+			redraw()
 
 
 func _on_connection_to_empty(from_node: StringName, from_port: int, release_position: Vector2) -> void:
@@ -110,7 +111,7 @@ func _on_connection_request(from_node: StringName, from_port: int, to_node: Stri
 	redraw()
 	
 func save():
-	for node in nodes.values():
+	for node in nodes_dict.values():
 		node.save()
 	conversation.save()
 
@@ -119,3 +120,28 @@ func _on_node_deselected(node: Node) -> void:
 	if node is PolylogueGraphNode:
 		if node.conversation_node.open_inspector_on_select():
 			EditorInterface.edit_node(null)
+
+func _delete_single_node(_uid: int):
+	var node_string_name = ""
+	for node in nodes_dict.values():
+		if node is PolylogueGraphNode:
+			if node.conversation_node.uid == _uid:
+				node_string_name = node.name
+				break
+	
+	if node_string_name != "":
+		_on_delete_nodes_request([node_string_name])
+
+func _on_delete_nodes_request(nodes: Array[StringName]) -> void:
+	# print("Deleting {0} nodes".format([len(nodes)]))
+	for deleted_node in nodes:
+		var deleted_graph_node = _get_graph_node_by_string_name(deleted_node)
+		var connections_list := get_connection_list_from_node(deleted_node)
+		for connection in connections_list:
+			if connection.get("to_node") == deleted_node:
+				var from_graph_node = _get_graph_node_by_string_name(connection.get("from_node"))
+				if from_graph_node:
+					from_graph_node.conversation_node.set_output_slot(connection.get("from_port"), 0)
+					conversation.remove_node(deleted_graph_node.conversation_node.uid)
+	redraw()
+					
