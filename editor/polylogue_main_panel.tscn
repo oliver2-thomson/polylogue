@@ -10,6 +10,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+minimap_enabled = false
 script = ExtResource("1_u0pld")
 
 [node name="DoNotDestroy" type="Control" parent="." unique_id=815207407]

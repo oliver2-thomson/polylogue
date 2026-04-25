@@ -20,7 +20,7 @@ func get_uid() -> int:
 	return uid
 	
 func advance(input: Variant = null) -> int:
-	print(output_slots)
+	# print(output_slots)
 	return output_slots[0]
 
 func auto_advance() -> bool:
