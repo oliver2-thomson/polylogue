@@ -34,7 +34,7 @@ func add_custom_controls() -> Control:
 	return controls
 
 func advance(input: Variant = null) -> int:
-	if typeof(input) != TYPE_INT:
+	if !(input is int):
 		printerr("OptionNode expected int input")
 		return -1
 		
