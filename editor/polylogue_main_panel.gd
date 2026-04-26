@@ -6,6 +6,9 @@ class_name PolylogueMainPanel
 var conversation: Conversation
 var nodes_dict: Dictionary[int, PolylogueGraphNode]
 
+var is_panning := false
+var last_mouse_pos := Vector2.ZERO
+
 @onready var label: Label = $DoNotDestroy/PanelContainer/Label
 @onready var node_selector: NodeSelector = $DoNotDestroy/NodeSelector
 
@@ -66,6 +69,18 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.keycode == KEY_S && event.is_command_or_control_pressed():
 			redraw()
+			
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_MIDDLE:
+			is_panning = event.pressed
+			last_mouse_pos = event.position
+			accept_event()
+
+	elif event is InputEventMouseMotion and is_panning:
+		var delta: Vector2 = event.position - last_mouse_pos
+		scroll_offset -= delta / zoom
+		last_mouse_pos = event.position
+		accept_event()
 
 
 func _on_connection_to_empty(from_node: StringName, from_port: int, release_position: Vector2) -> void:
@@ -74,7 +89,7 @@ func _on_connection_to_empty(from_node: StringName, from_port: int, release_posi
 	node_selector.choose_node_to_spawn({
 		"from_node": from_node,
 		"from_port": from_port,
-		"release_position": release_position + scroll_offset
+		"release_position": (release_position + scroll_offset) / zoom
 	})
 
 
@@ -111,6 +126,7 @@ func _on_connection_request(from_node: StringName, from_port: int, to_node: Stri
 	redraw()
 	
 func save():
+	if !conversation: return
 	for node in nodes_dict.values():
 		node.save()
 	conversation.save()

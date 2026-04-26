@@ -3,7 +3,7 @@
 extends PolylogueNodeBase
 class_name SignalNode
 
-@export var signal_name: String = ""
+@export var string_identifier: String = ""
 @export var payload: Variant
 
 func auto_advance() -> bool:

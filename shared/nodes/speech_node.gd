@@ -19,7 +19,7 @@ func add_custom_controls() -> Control:
 		character_label.text = "Character = Null"
 	var character_picker := EditorResourcePicker.new()
 	character_picker.base_type = "Character"
-	character_picker.resource_changed.connect(set_character)
+	character_picker.resource_changed.connect(_set_character)
 	
 	character_box.add_child(character_label)
 	character_box.add_child(character_picker)
@@ -27,6 +27,9 @@ func add_custom_controls() -> Control:
 	controls.add_child(character_box)
 	return controls
 
-func set_character(_character: Character):
+func _set_character(_character: Character):
 	character = _character
 	request_redraw.emit()
+
+func get_character() -> Character:
+	return character

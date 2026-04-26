@@ -5,6 +5,10 @@ class_name OptionNode
 
 @export var options: Array[String] = [""]
 
+class OptionChoice:
+	var option: String
+	var index: int
+
 func add_custom_controls() -> Control:
 	var parent_class_controls: Control = super.add_custom_controls()
 	var controls := VBoxContainer.new()
@@ -30,7 +34,7 @@ func add_custom_controls() -> Control:
 	return controls
 
 func advance(input: Variant = null) -> int:
-	if typeof(input) != TYPE_INT:
+	if !(input is int):
 		printerr("OptionNode expected int input")
 		return -1
 		
@@ -81,3 +85,6 @@ func add_inline_controls(index: int) -> Control:
 func _set_option(value: String, index: int):
 	if index < len(options):
 		options[index] = value
+		
+func get_options() -> Array[String]:
+	return options
