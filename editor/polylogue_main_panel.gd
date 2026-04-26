@@ -75,6 +75,9 @@ func _input(event: InputEvent) -> void:
 			is_panning = event.pressed
 			last_mouse_pos = event.position
 			accept_event()
+			
+		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+			_on_popup_request(get_local_mouse_position())
 
 	elif event is InputEventMouseMotion and is_panning:
 		var delta: Vector2 = event.position - last_mouse_pos
@@ -164,8 +167,11 @@ func _on_delete_nodes_request(nodes: Array[StringName]) -> void:
 					
 
 
+
+
 func _on_popup_request(at_position: Vector2) -> void:
-	print("Popup requested")
+	print("Popup requested at:" + str(at_position))
+	node_selector.position = at_position
 	node_selector.choose_node_to_spawn({
-				"relese_position": (at_position + scroll_offset) / zoom
-			})
+		"release_position": (at_position + scroll_offset) / zoom
+	})
