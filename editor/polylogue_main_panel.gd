@@ -75,13 +75,15 @@ func _input(event: InputEvent) -> void:
 			is_panning = event.pressed
 			last_mouse_pos = event.position
 			accept_event()
+			
+		#if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+			#_on_popup_request(get_local_mouse_position())
 
 	elif event is InputEventMouseMotion and is_panning:
 		var delta: Vector2 = event.position - last_mouse_pos
 		scroll_offset -= delta / zoom
 		last_mouse_pos = event.position
 		accept_event()
-
 
 func _on_connection_to_empty(from_node: StringName, from_port: int, release_position: Vector2) -> void:
 	# create popup listing all classes
@@ -101,9 +103,10 @@ func _on_node_selector_node_chosen(node_key: String, state: Dictionary) -> void:
 	
 	node_instance.position = state.get("release_position")
 	
-	var from_graph_node: PolylogueGraphNode = _get_graph_node_by_string_name(state.get("from_node"))
-	var from_node_instance: PolylogueNodeBase = from_graph_node.conversation_node
-	from_node_instance.set_output_slot(state.get("from_port"), node_index)
+	if state.keys().has("from_node"):
+		var from_graph_node: PolylogueGraphNode = _get_graph_node_by_string_name(state.get("from_node"))
+		var from_node_instance: PolylogueNodeBase = from_graph_node.conversation_node
+		from_node_instance.set_output_slot(state.get("from_port"), node_index)
 
 	redraw()
 	
@@ -162,3 +165,13 @@ func _on_delete_nodes_request(nodes: Array[StringName]) -> void:
 		conversation.remove_node(deleted_graph_node.conversation_node.uid)
 	redraw()
 					
+
+
+
+
+func _on_popup_request(at_position: Vector2) -> void:
+	print("Popup requested at:" + str(at_position))
+	node_selector.position = at_position
+	node_selector.choose_node_to_spawn({
+		"release_position": (at_position + scroll_offset) / zoom
+	})

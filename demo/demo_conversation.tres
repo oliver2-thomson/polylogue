@@ -1,0 +1,241 @@
+[gd_resource type="Resource" script_class="Conversation" format=3 uid="uid://b8jht3ppj1cxd"]
+
+[ext_resource type="Script" uid="uid://b4snm0d1xpg4j" path="res://addons/polylogue/shared/nodes/polylogue_node_base.gd" id="1_yq1w7"]
+[ext_resource type="Script" uid="uid://l8wv1btxtkbo" path="res://addons/polylogue/shared/nodes/start_node.gd" id="2_adr2f"]
+[ext_resource type="Resource" uid="uid://c2pws2p0hk67k" path="res://JohnDoe.tres" id="3_1fwje"]
+[ext_resource type="Script" uid="uid://uuhcmgjgntf8" path="res://addons/polylogue/shared/conversation.gd" id="3_5dyld"]
+[ext_resource type="Script" uid="uid://bj8h34ubewjk6" path="res://addons/polylogue/shared/nodes/line_node.gd" id="3_adr2f"]
+[ext_resource type="Script" uid="uid://dpocy2flyfyta" path="res://addons/polylogue/shared/nodes/option_node.gd" id="5_1fwje"]
+[ext_resource type="Script" uid="uid://btb0vv4opgsfu" path="res://addons/polylogue/shared/nodes/signal_node.gd" id="6_lp3e6"]
+[ext_resource type="Script" uid="uid://rp8pujfgrpwe" path="res://addons/polylogue/shared/nodes/end_node.gd" id="7_o4rjt"]
+[ext_resource type="Script" uid="uid://cjku1th4mqwnx" path="res://addons/polylogue/shared/nodes/branch_node.gd" id="8_vvme6"]
+
+[sub_resource type="Resource" id="Resource_1fwje"]
+script = ExtResource("2_adr2f")
+uid = 616175764375131969
+input_slots = Array[int]([-1])
+output_slots = Array[int]([5049675453503593903])
+
+[sub_resource type="Resource" id="Resource_5dyld"]
+script = ExtResource("3_adr2f")
+line = "This is a demo scene to show all node functionality"
+character = ExtResource("3_1fwje")
+uid = 5049675453503593903
+position = Vector2(340, -40)
+output_slots = Array[int]([246787078230542484])
+
+[sub_resource type="Resource" id="Resource_lp3e6"]
+script = ExtResource("5_1fwje")
+options = Array[String](["Signal Test", "Branch Test"])
+line = "This is an option node test"
+character = ExtResource("3_1fwje")
+uid = 246787078230542484
+position = Vector2(1212.0021, 79.599884)
+output_slots = Array[int]([6390254890275065604, 6480291565544703137])
+
+[sub_resource type="Resource" id="Resource_o4rjt"]
+script = ExtResource("3_adr2f")
+line = "This is a signal test"
+character = ExtResource("3_1fwje")
+uid = 6390254890275065604
+position = Vector2(1998.6025, -88.71994)
+output_slots = Array[int]([2394613829408007571])
+
+[sub_resource type="Resource" id="Resource_vvme6"]
+script = ExtResource("6_lp3e6")
+string_identifier = "TEST_STRING"
+payload = "This is a string"
+uid = 6714708807466124990
+position = Vector2(2960, 0)
+output_slots = Array[int]([1802532007605726405])
+
+[sub_resource type="Resource" id="Resource_oaat7"]
+script = ExtResource("6_lp3e6")
+string_identifier = "TEST_INT"
+payload = 42
+uid = 1802532007605726405
+position = Vector2(3320, 20)
+output_slots = Array[int]([6559063577505510295])
+
+[sub_resource type="Resource" id="Resource_mrp77"]
+script = ExtResource("3_adr2f")
+line = "3 signals have been sent"
+character = ExtResource("3_1fwje")
+uid = 6559063577505510295
+position = Vector2(3780, -60)
+output_slots = Array[int]([4644173594697266965])
+
+[sub_resource type="Resource" id="Resource_g3mll"]
+script = ExtResource("6_lp3e6")
+string_identifier = "EMPTY_SIGNAL"
+payload = null
+uid = 2394613829408007571
+position = Vector2(2613.8828, 19.879852)
+output_slots = Array[int]([6714708807466124990])
+
+[sub_resource type="Resource" id="Resource_wpuer"]
+script = ExtResource("3_adr2f")
+line = "This is a branch test"
+character = ExtResource("3_1fwje")
+uid = 6480291565544703137
+position = Vector2(2030.4019, 313.79977)
+output_slots = Array[int]([2719890367522101614])
+
+[sub_resource type="Resource" id="Resource_8ibyg"]
+script = ExtResource("3_adr2f")
+line = "The status of the toggle button is about to be checked"
+character = ExtResource("3_1fwje")
+uid = 2719890367522101614
+position = Vector2(2760, 340)
+output_slots = Array[int]([5440895845752790825])
+
+[sub_resource type="Resource" id="Resource_dm5gw"]
+script = ExtResource("8_vvme6")
+string_identifier = "GET_TOGGLE_BUTTON_STATUS"
+payload = null
+uid = 5440895845752790825
+position = Vector2(3540, 440)
+output_slots = Array[int]([8926768691206272114, 7273910016183056951])
+
+[sub_resource type="Resource" id="Resource_sltwg"]
+script = ExtResource("3_adr2f")
+line = "The toggle button is on"
+character = ExtResource("3_1fwje")
+uid = 8926768691206272114
+position = Vector2(3900, 320)
+output_slots = Array[int]([3967272439995762236])
+
+[sub_resource type="Resource" id="Resource_ctjk5"]
+script = ExtResource("3_adr2f")
+line = "The toggle button is off"
+character = ExtResource("3_1fwje")
+uid = 7273910016183056951
+position = Vector2(3928.0388, 693.1598)
+output_slots = Array[int]([3967272439995762236])
+
+[sub_resource type="Resource" id="Resource_s41pd"]
+script = ExtResource("5_1fwje")
+options = Array[String](["Yes", "No"])
+line = "Retest signals?"
+character = ExtResource("3_1fwje")
+uid = 4644173594697266965
+position = Vector2(4540, -100)
+output_slots = Array[int]([6390254890275065604, 4387476528320490412])
+
+[sub_resource type="Resource" id="Resource_88xbu"]
+script = ExtResource("7_o4rjt")
+uid = 4387476528320490412
+position = Vector2(5306.353, 116.64445)
+output_slots = Array[int]([-1])
+
+[sub_resource type="Resource" id="Resource_pw227"]
+script = ExtResource("3_adr2f")
+line = "The coin total is about to be tested whether it is greater than or equal to 30"
+character = ExtResource("3_1fwje")
+uid = 3967272439995762236
+position = Vector2(4750.797, 647.4477)
+output_slots = Array[int]([5431668604407593667])
+
+[sub_resource type="Resource" id="Resource_neiu0"]
+script = ExtResource("8_vvme6")
+string_identifier = "COIN_TOTAL_GREATER_OR_EQUAL_THAN"
+payload = 30
+uid = 5431668604407593667
+position = Vector2(5503.341, 710.9037)
+output_slots = Array[int]([165728479468331331, 3476577310971134162])
+
+[sub_resource type="Resource" id="Resource_qku0o"]
+script = ExtResource("3_adr2f")
+line = "You have 30 or more coins"
+character = ExtResource("3_1fwje")
+uid = 165728479468331331
+position = Vector2(5940, 580)
+output_slots = Array[int]([114951806727366952])
+
+[sub_resource type="Resource" id="Resource_b1km7"]
+script = ExtResource("3_adr2f")
+line = "You have less than 30 coins"
+character = ExtResource("3_1fwje")
+uid = 3476577310971134162
+position = Vector2(5985.7407, 1024.1038)
+output_slots = Array[int]([114951806727366952])
+
+[sub_resource type="Resource" id="Resource_mitca"]
+script = ExtResource("5_1fwje")
+options = Array[String](["50", "30", "5", "No"])
+line = "Spend coins"
+character = ExtResource("3_1fwje")
+uid = 114951806727366952
+position = Vector2(6780, 740)
+output_slots = Array[int]([3315137584037315137, 1327737921336651977, 2506547050746930091, 2268096187550766839])
+
+[sub_resource type="Resource" id="Resource_5jis5"]
+script = ExtResource("6_lp3e6")
+string_identifier = "SPEND_MONEY"
+payload = 50
+uid = 3315137584037315137
+position = Vector2(7780, 560)
+output_slots = Array[int]([2268096187550766839])
+
+[sub_resource type="Resource" id="Resource_djrlc"]
+script = ExtResource("6_lp3e6")
+string_identifier = "SPEND_MONEY"
+payload = 30
+uid = 1327737921336651977
+position = Vector2(7800, 740)
+output_slots = Array[int]([2268096187550766839])
+
+[sub_resource type="Resource" id="Resource_elko7"]
+script = ExtResource("6_lp3e6")
+string_identifier = "SPEND_MONEY"
+payload = 5
+uid = 2506547050746930091
+position = Vector2(7812.187, 963.5276)
+output_slots = Array[int]([2268096187550766839])
+
+[sub_resource type="Resource" id="Resource_d7cqu"]
+script = ExtResource("5_1fwje")
+options = Array[String](["Yes", "No"])
+line = "Restart Branch test?"
+character = ExtResource("3_1fwje")
+uid = 2268096187550766839
+position = Vector2(8213.355, 892.5838)
+output_slots = Array[int]([6480291565544703137, 8502152976519882970])
+
+[sub_resource type="Resource" id="Resource_wvrik"]
+script = ExtResource("7_o4rjt")
+uid = 8502152976519882970
+position = Vector2(8924.47, 1103.976)
+output_slots = Array[int]([-1])
+
+[resource]
+script = ExtResource("3_5dyld")
+start_node_id = 616175764375131969
+nodes = Dictionary[int, ExtResource("1_yq1w7")]({
+114951806727366952: SubResource("Resource_mitca"),
+165728479468331331: SubResource("Resource_qku0o"),
+246787078230542484: SubResource("Resource_lp3e6"),
+616175764375131969: SubResource("Resource_1fwje"),
+1327737921336651977: SubResource("Resource_djrlc"),
+1802532007605726405: SubResource("Resource_oaat7"),
+2268096187550766839: SubResource("Resource_d7cqu"),
+2394613829408007571: SubResource("Resource_g3mll"),
+2506547050746930091: SubResource("Resource_elko7"),
+2719890367522101614: SubResource("Resource_8ibyg"),
+3315137584037315137: SubResource("Resource_5jis5"),
+3476577310971134162: SubResource("Resource_b1km7"),
+3967272439995762236: SubResource("Resource_pw227"),
+4387476528320490412: SubResource("Resource_88xbu"),
+4644173594697266965: SubResource("Resource_s41pd"),
+5049675453503593903: SubResource("Resource_5dyld"),
+5431668604407593667: SubResource("Resource_neiu0"),
+5440895845752790825: SubResource("Resource_dm5gw"),
+6390254890275065604: SubResource("Resource_o4rjt"),
+6480291565544703137: SubResource("Resource_wpuer"),
+6559063577505510295: SubResource("Resource_mrp77"),
+6714708807466124990: SubResource("Resource_vvme6"),
+7273910016183056951: SubResource("Resource_ctjk5"),
+8502152976519882970: SubResource("Resource_wvrik"),
+8926768691206272114: SubResource("Resource_sltwg")
+})
+metadata/_custom_type_script = "uid://uuhcmgjgntf8"
