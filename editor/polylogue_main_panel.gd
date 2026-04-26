@@ -76,8 +76,8 @@ func _input(event: InputEvent) -> void:
 			last_mouse_pos = event.position
 			accept_event()
 			
-		if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-			_on_popup_request(get_local_mouse_position())
+		#if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+			#_on_popup_request(get_local_mouse_position())
 
 	elif event is InputEventMouseMotion and is_panning:
 		var delta: Vector2 = event.position - last_mouse_pos
