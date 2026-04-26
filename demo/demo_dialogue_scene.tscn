@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cfke4hwgiyym0" path="res://addons/polylogue/demo/demo_dialogue_scene.gd" id="1_412ll"]
 [ext_resource type="Script" uid="uid://kspoaymatdjf" path="res://addons/polylogue/runtime/reader.gd" id="2_hh3yj"]
-[ext_resource type="Resource" uid="uid://dd2e5hrudrele" path="res://conversations/new_resource.tres" id="3_hh3yj"]
+[ext_resource type="Resource" uid="uid://b8jht3ppj1cxd" path="res://addons/polylogue/demo/demo_conversation.tres" id="3_hh3yj"]
 
 [node name="DemoDialogueScene" type="Control" unique_id=780848337]
 layout_mode = 3
@@ -57,6 +57,20 @@ text = "Advance dialogue"
 layout_mode = 2
 text = "Play dialogue"
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=545589191]
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ToggleableButton" type="CheckButton" parent="VBoxContainer2" unique_id=1675505367]
+layout_mode = 2
+text = "Toggleable button"
+
+[node name="CoinsLabel" type="Label" parent="VBoxContainer2" unique_id=1278846368]
+layout_mode = 2
+text = "Coins:"
+
+[connection signal="branch_requested" from="Reader" to="." method="_on_reader_branch_requested"]
 [connection signal="exited" from="Reader" to="." method="_on_reader_exited"]
 [connection signal="node_ready" from="Reader" to="." method="_on_reader_node_ready"]
 [connection signal="polylogue_signal_emitted" from="Reader" to="." method="_on_reader_polylogue_signal_emitted"]
