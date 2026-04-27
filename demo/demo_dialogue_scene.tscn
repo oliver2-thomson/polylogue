@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cfke4hwgiyym0" path="res://addons/polylogue/demo/demo_dialogue_scene.gd" id="1_412ll"]
 [ext_resource type="Script" uid="uid://kspoaymatdjf" path="res://addons/polylogue/runtime/reader.gd" id="2_hh3yj"]
-[ext_resource type="Resource" uid="uid://b8jht3ppj1cxd" path="res://addons/polylogue/demo/demo_conversation.tres" id="3_hh3yj"]
 
 [node name="DemoDialogueScene" type="Control" unique_id=780848337]
 layout_mode = 3
@@ -15,7 +14,6 @@ script = ExtResource("1_412ll")
 
 [node name="Reader" type="Node" parent="." unique_id=818141821]
 script = ExtResource("2_hh3yj")
-conversation = ExtResource("3_hh3yj")
 metadata/_custom_type_script = "uid://kspoaymatdjf"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1506486893]
