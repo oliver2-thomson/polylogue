@@ -10,6 +10,124 @@
 [ext_resource type="Script" uid="uid://rp8pujfgrpwe" path="res://addons/polylogue/shared/nodes/end_node.gd" id="7_o4rjt"]
 [ext_resource type="Script" uid="uid://cjku1th4mqwnx" path="res://addons/polylogue/shared/nodes/branch_node.gd" id="8_vvme6"]
 
+[sub_resource type="Resource" id="Resource_88xbu"]
+script = ExtResource("3_adr2f")
+line = "The player has less than 30 money"
+character = ExtResource("3_1fwje")
+uid = 530935813247211173
+position = Vector2(2880, 1260)
+output_slots = Array[int]([8756190312043285987])
+
+[sub_resource type="Resource" id="Resource_s41pd"]
+script = ExtResource("8_vvme6")
+string_identifier = "GET_TOGGLE_BUTTON_STATUS"
+payload = null
+uid = 972811611413939643
+position = Vector2(2552.9124, 408.54288)
+output_slots = Array[int]([5154917690131566505, 2807648691271374450])
+
+[sub_resource type="Resource" id="Resource_lp3e6"]
+script = ExtResource("3_adr2f")
+line = "3 signals will be emitted"
+character = ExtResource("3_1fwje")
+uid = 1133096689815848762
+position = Vector2(1712, -81)
+output_slots = Array[int]([8444200711280922581])
+
+[sub_resource type="Resource" id="Resource_g3mll"]
+script = ExtResource("5_1fwje")
+options = Array[String](["Checkbox", "Money"])
+line = "Would you like to test the status of the checkbox or test how much money there is"
+character = ExtResource("3_1fwje")
+uid = 2091215931105472683
+position = Vector2(1714.8661, 400.56897)
+output_slots = Array[int]([972811611413939643, 3584892226605570052])
+
+[sub_resource type="Resource" id="Resource_8ibyg"]
+script = ExtResource("3_adr2f")
+line = "The checkbox is off"
+character = ExtResource("3_1fwje")
+uid = 2807648691271374450
+position = Vector2(2880, 620)
+output_slots = Array[int]([5378563117927995406])
+
+[sub_resource type="Resource" id="Resource_1fwje"]
+script = ExtResource("5_1fwje")
+options = Array[String](["Path 1 (Signal Test)", "Path 2 (Logic Branch Test)"])
+line = "This is an option node please choose a path"
+character = ExtResource("3_1fwje")
+uid = 2954053303030025442
+position = Vector2(940, 68)
+output_slots = Array[int]([1133096689815848762, 2091215931105472683])
+
+[sub_resource type="Resource" id="Resource_mrp77"]
+script = ExtResource("3_adr2f")
+line = "3 Signals have been emitted"
+character = ExtResource("3_1fwje")
+uid = 3548069220942569160
+position = Vector2(3255, 59)
+output_slots = Array[int]([5378563117927995406])
+
+[sub_resource type="Resource" id="Resource_sltwg"]
+script = ExtResource("8_vvme6")
+string_identifier = "COIN_TOTAL_GREATER_OR_EQUAL_THAN"
+payload = 30
+uid = 3584892226605570052
+position = Vector2(2500, 1080)
+output_slots = Array[int]([6774376728122696538, 530935813247211173])
+
+[sub_resource type="Resource" id="Resource_oaat7"]
+script = ExtResource("6_lp3e6")
+string_identifier = "STRING_SIGNAL"
+payload = "This is a String"
+uid = 4333506508085700481
+position = Vector2(2980, 0)
+output_slots = Array[int]([3548069220942569160])
+
+[sub_resource type="Resource" id="Resource_qku0o"]
+script = ExtResource("7_o4rjt")
+uid = 5018095876550398934
+position = Vector2(4820, 1080)
+output_slots = Array[int]([-1])
+
+[sub_resource type="Resource" id="Resource_wpuer"]
+script = ExtResource("3_adr2f")
+line = "The checkbox is on"
+character = ExtResource("3_1fwje")
+uid = 5154917690131566505
+position = Vector2(2860.2522, 350.4629)
+output_slots = Array[int]([5378563117927995406])
+
+[sub_resource type="Resource" id="Resource_neiu0"]
+script = ExtResource("6_lp3e6")
+string_identifier = "SPEND_MONEY"
+payload = 5
+uid = 5332351934703681497
+position = Vector2(4480, 1220)
+output_slots = Array[int]([5018095876550398934])
+
+[sub_resource type="Resource" id="Resource_dm5gw"]
+script = ExtResource("7_o4rjt")
+uid = 5378563117927995406
+position = Vector2(4140, 440)
+output_slots = Array[int]([-1])
+
+[sub_resource type="Resource" id="Resource_mitca"]
+script = ExtResource("6_lp3e6")
+string_identifier = "SPEND_MONEY"
+payload = 30
+uid = 6384245370011866482
+position = Vector2(4504.084, 1520.986)
+output_slots = Array[int]([5018095876550398934])
+
+[sub_resource type="Resource" id="Resource_ctjk5"]
+script = ExtResource("3_adr2f")
+line = "The player has more than or equal to 30 money"
+character = ExtResource("3_1fwje")
+uid = 6774376728122696538
+position = Vector2(2871.536, 1005.40924)
+output_slots = Array[int]([8756190312043285987])
+
 [sub_resource type="Resource" id="Resource_yq1w7"]
 script = ExtResource("2_adr2f")
 uid = 7107675779900844728
@@ -24,22 +142,13 @@ uid = 7419386291030087214
 position = Vector2(240, 20)
 output_slots = Array[int]([2954053303030025442])
 
-[sub_resource type="Resource" id="Resource_1fwje"]
-script = ExtResource("5_1fwje")
-options = Array[String](["Path 1 (Signal Test)", "Path 2 (Logic Branch Test)"])
-line = "This is an option node please choose a path"
-character = ExtResource("3_1fwje")
-uid = 2954053303030025442
-position = Vector2(940, 68)
-output_slots = Array[int]([1133096689815848762, 2091215931105472683])
-
-[sub_resource type="Resource" id="Resource_lp3e6"]
-script = ExtResource("3_adr2f")
-line = "3 signals will be emitted"
-character = ExtResource("3_1fwje")
-uid = 1133096689815848762
-position = Vector2(1712, -81)
-output_slots = Array[int]([8444200711280922581])
+[sub_resource type="Resource" id="Resource_vvme6"]
+script = ExtResource("6_lp3e6")
+string_identifier = "INT_SIGNAL"
+payload = 42
+uid = 7790712822512697327
+position = Vector2(2716, -17)
+output_slots = Array[int]([4333506508085700481])
 
 [sub_resource type="Resource" id="Resource_o4rjt"]
 script = ExtResource("6_lp3e6")
@@ -49,92 +158,13 @@ uid = 8444200711280922581
 position = Vector2(2456, -38)
 output_slots = Array[int]([7790712822512697327])
 
-[sub_resource type="Resource" id="Resource_vvme6"]
+[sub_resource type="Resource" id="Resource_b1km7"]
 script = ExtResource("6_lp3e6")
-string_identifier = "INT_SIGNAL"
-payload = 42
-uid = 7790712822512697327
-position = Vector2(2716, -17)
-output_slots = Array[int]([4333506508085700481])
-
-[sub_resource type="Resource" id="Resource_oaat7"]
-script = ExtResource("6_lp3e6")
-string_identifier = "STRING_SIGNAL"
-payload = "This is a String"
-uid = 4333506508085700481
-position = Vector2(2980, 0)
-output_slots = Array[int]([3548069220942569160])
-
-[sub_resource type="Resource" id="Resource_mrp77"]
-script = ExtResource("3_adr2f")
-line = "3 Signals have been emitted"
-character = ExtResource("3_1fwje")
-uid = 3548069220942569160
-position = Vector2(3255, 59)
-output_slots = Array[int]([5378563117927995406])
-
-[sub_resource type="Resource" id="Resource_g3mll"]
-script = ExtResource("5_1fwje")
-options = Array[String](["Checkbox", "Money"])
-line = "Would you like to test the status of the checkbox or test how much money there is"
-character = ExtResource("3_1fwje")
-uid = 2091215931105472683
-position = Vector2(1714.8661, 400.56897)
-output_slots = Array[int]([972811611413939643, 3584892226605570052])
-
-[sub_resource type="Resource" id="Resource_s41pd"]
-script = ExtResource("8_vvme6")
-string_identifier = "GET_TOGGLE_BUTTON_STATUS"
-payload = null
-uid = 972811611413939643
-position = Vector2(2552.9124, 408.54288)
-output_slots = Array[int]([5154917690131566505, 2807648691271374450])
-
-[sub_resource type="Resource" id="Resource_wpuer"]
-script = ExtResource("3_adr2f")
-line = "The checkbox is on"
-character = ExtResource("3_1fwje")
-uid = 5154917690131566505
-position = Vector2(2860.2522, 350.4629)
-output_slots = Array[int]([5378563117927995406])
-
-[sub_resource type="Resource" id="Resource_8ibyg"]
-script = ExtResource("3_adr2f")
-line = "The checkbox is off"
-character = ExtResource("3_1fwje")
-uid = 2807648691271374450
-position = Vector2(2880, 620)
-output_slots = Array[int]([5378563117927995406])
-
-[sub_resource type="Resource" id="Resource_dm5gw"]
-script = ExtResource("7_o4rjt")
-uid = 5378563117927995406
-position = Vector2(4140, 440)
-output_slots = Array[int]([-1])
-
-[sub_resource type="Resource" id="Resource_sltwg"]
-script = ExtResource("8_vvme6")
-string_identifier = "COIN_TOTAL_GREATER_OR_EQUAL_THAN"
-payload = 30
-uid = 3584892226605570052
-position = Vector2(2500, 1080)
-output_slots = Array[int]([6774376728122696538, 530935813247211173])
-
-[sub_resource type="Resource" id="Resource_ctjk5"]
-script = ExtResource("3_adr2f")
-line = "The player has more than or equal to 30 money"
-character = ExtResource("3_1fwje")
-uid = 6774376728122696538
-position = Vector2(2871.536, 1005.40924)
-output_slots = Array[int]([8756190312043285987])
-
-[sub_resource type="Resource" id="Resource_88xbu"]
-script = ExtResource("3_adr2f")
-line = "The player has less than 30 money"
-character = ExtResource("3_1fwje")
-uid = 530935813247211173
-position = Vector2(2880, 1260)
-output_slots = Array[int]([8756190312043285987])
+string_identifier = "SPEND_MONEY"
+payload = 10
+uid = 8725456649942816882
+position = Vector2(4501.156, 1339.4375)
+output_slots = Array[int]([5018095876550398934])
 
 [sub_resource type="Resource" id="Resource_pw227"]
 script = ExtResource("5_1fwje")
@@ -144,36 +174,6 @@ character = ExtResource("3_1fwje")
 uid = 8756190312043285987
 position = Vector2(3589.7158, 1137.2865)
 output_slots = Array[int]([5018095876550398934, 5332351934703681497, 8725456649942816882, 6384245370011866482])
-
-[sub_resource type="Resource" id="Resource_neiu0"]
-script = ExtResource("6_lp3e6")
-string_identifier = "SPEND_MONEY"
-payload = 5
-uid = 5332351934703681497
-position = Vector2(4480, 1220)
-output_slots = Array[int]([5018095876550398934])
-
-[sub_resource type="Resource" id="Resource_qku0o"]
-script = ExtResource("7_o4rjt")
-uid = 5018095876550398934
-position = Vector2(4820, 1080)
-output_slots = Array[int]([-1])
-
-[sub_resource type="Resource" id="Resource_b1km7"]
-script = ExtResource("6_lp3e6")
-string_identifier = "SPEND_MONEY"
-payload = 10
-uid = 8725456649942816882
-position = Vector2(4501.156, 1339.4375)
-output_slots = Array[int]([5018095876550398934])
-
-[sub_resource type="Resource" id="Resource_mitca"]
-script = ExtResource("6_lp3e6")
-string_identifier = "SPEND_MONEY"
-payload = 30
-uid = 6384245370011866482
-position = Vector2(4504.084, 1520.986)
-output_slots = Array[int]([5018095876550398934])
 
 [resource]
 script = ExtResource("3_5dyld")

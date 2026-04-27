@@ -9,12 +9,8 @@ class OptionChoice:
 	var option: String
 	var index: int
 
-func add_custom_controls() -> Control:
-	var parent_class_controls: Control = super.add_custom_controls()
-	var controls := VBoxContainer.new()
-	
-	if parent_class_controls:
-		controls.add_child(parent_class_controls)
+func add_custom_controls() -> VBoxContainer:
+	var parent_class_controls := super.add_custom_controls()
 		
 	var button_box := HBoxContainer.new()
 	
@@ -29,9 +25,9 @@ func add_custom_controls() -> Control:
 	button_box.add_child(left_button)
 	button_box.add_child(right_button)
 	
-	controls.add_child(button_box)
+	parent_class_controls.add_child(button_box)
 	
-	return controls
+	return parent_class_controls
 
 func advance(input: Variant = null) -> int:
 	if !(input is int):

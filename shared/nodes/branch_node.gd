@@ -1,3 +1,5 @@
+@tool
+
 extends SignalNode
 class_name BranchNode
 
