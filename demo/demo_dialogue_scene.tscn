@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cfke4hwgiyym0" path="res://addons/polylogue/demo/demo_dialogue_scene.gd" id="1_412ll"]
 [ext_resource type="Script" uid="uid://kspoaymatdjf" path="res://addons/polylogue/runtime/reader.gd" id="2_hh3yj"]
-[ext_resource type="Resource" uid="uid://b8jht3ppj1cxd" path="res://addons/polylogue/demo/demo_conversation.tres" id="3_hh3yj"]
+[ext_resource type="Resource" uid="uid://bdi2584ais7j" path="res://addons/polylogue/demo/demo_conversation.tres" id="3_hh3yj"]
 
 [node name="DemoDialogueScene" type="Control" unique_id=780848337]
 layout_mode = 3
