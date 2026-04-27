@@ -6,11 +6,9 @@ class_name SpeechNode
 
 @export var character: Character
 
-func add_custom_controls() -> Control:
-	var parent_class_controls: Control = super.add_custom_controls()
-	var controls: Control = VBoxContainer.new()
-	if parent_class_controls:
-		controls.add_child(parent_class_controls)
+func add_custom_controls() -> VBoxContainer:
+	var parent_class_controls := super.add_custom_controls()
+
 	var character_box := HBoxContainer.new()
 	var character_label := Label.new()
 	if character:
@@ -24,8 +22,8 @@ func add_custom_controls() -> Control:
 	character_box.add_child(character_label)
 	character_box.add_child(character_picker)
 	
-	controls.add_child(character_box)
-	return controls
+	parent_class_controls.add_child(character_box)
+	return parent_class_controls
 
 func _set_character(_character: Character):
 	character = _character

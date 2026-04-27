@@ -42,8 +42,8 @@ func set_output_slot(index: int, destination: int):
 	
 	output_slots[index] = destination
 
-func add_custom_controls() -> Control:
-	return null
+func add_custom_controls() -> VBoxContainer:
+	return VBoxContainer.new()
 	
 func add_inline_controls(index: int) -> Control:
 	return null
