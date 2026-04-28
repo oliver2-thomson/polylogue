@@ -59,3 +59,7 @@ func exit(reason: String):
 	running = false
 	print(reason)
 	exited.emit(reason)
+	
+func set_conversation(_conversation: Conversation):
+	exit("New Conversation set")
+	conversation = _conversation
