@@ -70,20 +70,20 @@ func _input(event: InputEvent) -> void:
 		if event.keycode == KEY_S && event.is_command_or_control_pressed():
 			redraw()
 			
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_MIDDLE:
-			is_panning = event.pressed
-			last_mouse_pos = event.position
-			accept_event()
-			
-		#if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-			#_on_popup_request(get_local_mouse_position())
-
-	elif event is InputEventMouseMotion and is_panning:
-		var delta: Vector2 = event.position - last_mouse_pos
-		scroll_offset -= delta / zoom
-		last_mouse_pos = event.position
-		accept_event()
+	#if event is InputEventMouseButton:
+		#if event.button_index == MOUSE_BUTTON_MIDDLE:
+			#is_panning = event.pressed
+			#last_mouse_pos = event.position
+			#accept_event()
+			#
+		##if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
+			##_on_popup_request(get_local_mouse_position())
+#
+	#elif event is InputEventMouseMotion and is_panning:
+		#var delta: Vector2 = event.position - last_mouse_pos
+		#scroll_offset -= delta / zoom
+		#last_mouse_pos = event.position
+		#accept_event()
 
 func _on_connection_to_empty(from_node: StringName, from_port: int, release_position: Vector2) -> void:
 	# create popup listing all classes
