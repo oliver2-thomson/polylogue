@@ -17,6 +17,11 @@ func _init(_conversation_node: PolylogueNodeBase):
 		var control = conversation_node.add_inline_controls(HBoxContainer.new(), i)
 		control.alignment = BoxContainer.ALIGNMENT_CENTER
 		
+		# For any nodes that have no inline controls to add so that they render properly
+		if len(control.get_children()) == 0:
+			control = Label.new()
+			
+			
 		add_child(control)
 		
 	for i in len(conversation_node.get_input_slots()):
