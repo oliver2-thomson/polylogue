@@ -55,7 +55,6 @@ func clear():
 		if exempt_from_clear.has(child.name): continue
 		if child is PolylogueGraphNode:
 			child.conversation_node.request_redraw.disconnect(redraw)
-			child.conversation_node.request_delete.disconnect(_delete_single_node)
 		child.queue_free()
 
 
@@ -124,18 +123,6 @@ func _on_node_deselected(node: Node) -> void:
 	if node is PolylogueGraphNode:
 		if node.conversation_node.open_inspector_on_select():
 			EditorInterface.edit_node(null)
-
-func _delete_single_node(_uid: int):
-	var node_string_name = ""
-	for node in nodes_dict.values():
-		if node is StartNode: return
-		if node is PolylogueGraphNode:
-			if node.conversation_node.uid == _uid:
-				node_string_name = node.name
-				break
-	
-	if node_string_name != "":
-		_on_delete_nodes_request([node_string_name])
 
 func _on_delete_nodes_request(nodes: Array[StringName]) -> void:
 	# print("Deleting {0} nodes".format([len(nodes)]))

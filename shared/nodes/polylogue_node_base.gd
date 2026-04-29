@@ -5,7 +5,6 @@ extends Resource
 class_name PolylogueNodeBase
 
 signal request_redraw()
-signal request_delete(_uid: int)
 
 @export var uid: int
 @export var position: Vector2 = Vector2(0, 0)
