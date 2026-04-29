@@ -27,6 +27,9 @@ func add_node(node: PolylogueNodeBase) -> int:
 	nodes[id] = node
 	return id
 	
+func get_nodes() -> Dictionary[int, PolylogueNodeBase]:
+	return nodes
+	
 func remove_node(index: int):
 	nodes.erase(index)
 
@@ -34,3 +37,11 @@ func save():
 	# print("Saving conversation")
 	if resource_path: # Stops from trying to save before the resource has a path during creation
 		ResourceSaver.save(self, resource_path)
+
+func get_start_node_id() -> int:
+	return start_node_id
+	
+# Hide these values from the editor since they contain 64 bit integers which cannot be displayed
+func _validate_property(property: Dictionary) -> void:
+	if property.name in ["start_node_id", "nodes"]:
+		property.usage &= ~PROPERTY_USAGE_EDITOR

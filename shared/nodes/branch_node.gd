@@ -6,14 +6,18 @@ class_name BranchNode
 func _init() -> void:
 	output_slots = [0, 0]
 
-func add_inline_controls(index: int) -> Control:
+func add_inline_controls(controls: HBoxContainer, index: int) -> HBoxContainer:
+	controls = super.add_inline_controls(controls, index)
+	
 	var inline_label: Label = Label.new()
 	if index == 0:
 		inline_label.text = "True"
 	elif index == 1:
 		inline_label.text = "False"
 	
-	return inline_label
+	controls.add_child(inline_label)
+	
+	return controls
 	
 func advance(input: Variant = null) -> int:
 	if !(input is bool) or input == null:

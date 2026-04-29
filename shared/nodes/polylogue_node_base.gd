@@ -6,7 +6,7 @@ class_name PolylogueNodeBase
 
 signal request_redraw()
 
-@export var uid: int
+var uid: int
 @export var position: Vector2 = Vector2(0, 0)
 
 @export var input_slots: Array[int] = [0]
@@ -41,11 +41,11 @@ func set_output_slot(index: int, destination: int):
 	
 	output_slots[index] = destination
 
-func add_custom_controls(container: VBoxContainer) -> VBoxContainer:
-	return container
+func add_custom_controls(controls: VBoxContainer) -> VBoxContainer:
+	return controls
 
-func add_inline_controls(index: int) -> Control:
-	return null
+func add_inline_controls(controls: HBoxContainer, index: int) -> HBoxContainer:
+	return controls
 
 func open_inspector_on_select():
 	return false

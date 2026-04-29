@@ -16,12 +16,12 @@ func start():
 		printerr("Start called with no conversation set")
 		return
 	
-	if conversation.start_node_id == 0:
+	if conversation.get_start_node_id() == 0:
 		exit("Invalid starting node")
 		return
 	
 	running = true
-	current_node_index = conversation.start_node_id
+	current_node_index = conversation.get_start_node_id()
 	advance()
 
 
@@ -44,6 +44,7 @@ func process_new_node():
 	var current_node: PolylogueNodeBase = conversation.nodes[current_node_index]
 	if current_node is EndNode:
 		exit("Hit Exit node")
+		return
 	elif current_node is BranchNode:
 		branch_requested.emit(current_node.string_identifier, current_node.payload)
 	elif current_node is SignalNode:
@@ -57,7 +58,6 @@ func process_new_node():
 
 func exit(reason: String):
 	running = false
-	print(reason)
 	exited.emit(reason)
 	
 func set_conversation(_conversation: Conversation):

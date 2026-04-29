@@ -142,7 +142,6 @@ func _on_delete_nodes_request(nodes: Array[StringName]) -> void:
 
 
 func _on_popup_request(at_position: Vector2) -> void:
-	print("Popup requested at:" + str(at_position))
 	node_selector.position = at_position
 	node_selector.choose_node_to_spawn({
 		"release_position": (at_position + scroll_offset) / zoom
