@@ -28,7 +28,13 @@ offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
 text = "This demo scene is set up to show how the Branching node works.
-It is not reccommended to change the Conversation attached to the Reader."
+The Branching node is designed for logical branching based on boolean conditions from the game world.
+Each Branch node has a Condition and optional Payload.
+For each Condition that is set up within a Conversation a matching case should be set up on whichever script listens to the Reader.
+It is ESSENTIAL that the function that handles the Branch nodes calls the Advance function on the reader with a boolean
+result once and only once. 
+It is reccomended that after each advance call the function early returns and a default return false be added to catch unhandled Conditions
+Have a look at the script attached to the BranchingDemo node in the scene heirarchy to see how this works."
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=116487321]
@@ -38,10 +44,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -76.0
+offset_top = 63.0
+offset_right = 77.0
+offset_bottom = 103.0
 grow_horizontal = 2
 grow_vertical = 2
 

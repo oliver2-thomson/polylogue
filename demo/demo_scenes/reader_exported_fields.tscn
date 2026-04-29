@@ -32,8 +32,7 @@ offset_bottom = 23.0
 grow_horizontal = 2
 text = "This demo scene is set up to show how the Reader can be extended 
 to have @export fields for the apropriate controls and labels
-It does not have any Branch or Signal handling implemented. 
-Signals will print to the console and Branches will default to false
+Have a look at the script attached to the Reader node in the scene heirarchy to see how this looks
 You can replace the conversation in the editor by selecting the ReaderExtendedScene node and setting a new Conversation"
 horizontal_alignment = 1
 

@@ -26,8 +26,9 @@ offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
 text = "This demo scene is set up to show how the Signal node works.
-It does not have any Branch handling implemented.
-It is not reccommended to change the Conversation attached to the Reader."
+Each Signal node has a EventName and optional Payload.
+For each EventName that is set up in a conversation a matching case should be implemented in the script that listens to the Reader node.
+Have a look at the script attached to the SignalDemo node in the scene heirarchy to see how this looks"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=380546079]

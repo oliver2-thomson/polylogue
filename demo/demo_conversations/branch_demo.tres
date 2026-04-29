@@ -8,6 +8,25 @@
 [ext_resource type="Script" uid="uid://cjku1th4mqwnx" path="res://addons/polylogue/shared/nodes/branch_node.gd" id="5_lecjf"]
 [ext_resource type="Script" uid="uid://rp8pujfgrpwe" path="res://addons/polylogue/shared/nodes/end_node.gd" id="6_wtj30"]
 
+[sub_resource type="Resource" id="Resource_c3ynp"]
+script = ExtResource("3_20emf")
+line = "The check box is enabled"
+character = ExtResource("3_lecjf")
+position = Vector2(1260, 0)
+output_slots = Array[int]([2073460218293477741])
+
+[sub_resource type="Resource" id="Resource_2cgc5"]
+script = ExtResource("6_wtj30")
+position = Vector2(1900, 60)
+output_slots = Array[int]([-1])
+
+[sub_resource type="Resource" id="Resource_v03nq"]
+script = ExtResource("3_20emf")
+line = "The check box is disabled"
+character = ExtResource("3_lecjf")
+position = Vector2(1260, 340)
+output_slots = Array[int]([2073460218293477741])
+
 [sub_resource type="Resource" id="Resource_lecjf"]
 script = ExtResource("2_20emf")
 input_slots = Array[int]([-1])
@@ -26,25 +45,6 @@ string_identifier = "TEST_CHECK_BUTTON"
 payload = null
 position = Vector2(940, 0)
 output_slots = Array[int]([1173961089259316930, 3540922477164205942])
-
-[sub_resource type="Resource" id="Resource_c3ynp"]
-script = ExtResource("3_20emf")
-line = "The check box is enabled"
-character = ExtResource("3_lecjf")
-position = Vector2(1260, 0)
-output_slots = Array[int]([2073460218293477741])
-
-[sub_resource type="Resource" id="Resource_v03nq"]
-script = ExtResource("3_20emf")
-line = "The check box is disabled"
-character = ExtResource("3_lecjf")
-position = Vector2(1260, 340)
-output_slots = Array[int]([2073460218293477741])
-
-[sub_resource type="Resource" id="Resource_2cgc5"]
-script = ExtResource("6_wtj30")
-position = Vector2(1900, 60)
-output_slots = Array[int]([-1])
 
 [resource]
 script = ExtResource("3_mn30x")
