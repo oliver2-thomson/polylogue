@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="Conversation" format=3 uid="uid://ccxbvhoj6q2fd"]
+
+[ext_resource type="Script" uid="uid://uuhcmgjgntf8" path="res://addons/polylogue/shared/conversation.gd" id="1_io132"]
+[ext_resource type="Script" uid="uid://b4snm0d1xpg4j" path="res://addons/polylogue/shared/nodes/polylogue_node_base.gd" id="1_srgfk"]
+[ext_resource type="Script" uid="uid://l8wv1btxtkbo" path="res://addons/polylogue/shared/nodes/start_node.gd" id="2_o2nho"]
+[ext_resource type="Resource" uid="uid://yy0iu4pcdnwk" path="res://addons/polylogue/demo/demo_characters/character_1.tres" id="3_sgjn2"]
+[ext_resource type="Script" uid="uid://bj8h34ubewjk6" path="res://addons/polylogue/shared/nodes/line_node.gd" id="4_2a31y"]
+[ext_resource type="Resource" uid="uid://2u48ou3ygqpk" path="res://addons/polylogue/demo/demo_characters/character_2.tres" id="5_b8ja1"]
+[ext_resource type="Script" uid="uid://rp8pujfgrpwe" path="res://addons/polylogue/shared/nodes/end_node.gd" id="6_ivd75"]
+
+[sub_resource type="Resource" id="Resource_lhd8v"]
+script = ExtResource("2_o2nho")
+input_slots = Array[int]([-1])
+output_slots = Array[int]([2698297002647745362])
+
+[sub_resource type="Resource" id="Resource_had21"]
+script = ExtResource("4_2a31y")
+line = "Hello Character 2! How are you today?"
+character = ExtResource("3_sgjn2")
+position = Vector2(280, 0)
+output_slots = Array[int]([2785215693005111501])
+
+[sub_resource type="Resource" id="Resource_cxtv4"]
+script = ExtResource("4_2a31y")
+line = "I am very well Character 1. How are you?"
+character = ExtResource("5_b8ja1")
+position = Vector2(940, 0)
+output_slots = Array[int]([4198714174575109455])
+
+[sub_resource type="Resource" id="Resource_abvq8"]
+script = ExtResource("4_2a31y")
+line = "I am also doing well. Goodbye!"
+character = ExtResource("3_sgjn2")
+position = Vector2(1600, 0)
+output_slots = Array[int]([9165216953844795836])
+
+[sub_resource type="Resource" id="Resource_ie5q3"]
+script = ExtResource("6_ivd75")
+position = Vector2(2260, 0)
+output_slots = Array[int]([-1])
+
+[resource]
+script = ExtResource("1_io132")
+start_node_id = 2751941486092449171
+nodes = Dictionary[int, ExtResource("1_srgfk")]({
+2698297002647745362: SubResource("Resource_had21"),
+2751941486092449171: SubResource("Resource_lhd8v"),
+2785215693005111501: SubResource("Resource_cxtv4"),
+4198714174575109455: SubResource("Resource_abvq8"),
+9165216953844795836: SubResource("Resource_ie5q3")
+})
+metadata/_custom_type_script = "uid://uuhcmgjgntf8"

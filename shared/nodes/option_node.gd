@@ -5,10 +5,6 @@ class_name OptionNode
 
 @export var options: Array[String] = [""]
 
-class OptionChoice:
-	var option: String
-	var index: int
-
 func add_custom_controls(controls: VBoxContainer) -> VBoxContainer:
 	controls = super.add_custom_controls(controls)
 	

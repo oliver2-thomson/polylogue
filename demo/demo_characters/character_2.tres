@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="Character" format=3 uid="uid://2u48ou3ygqpk"]
+
+[ext_resource type="Script" uid="uid://cvakngavwvvtn" path="res://addons/polylogue/shared/character.gd" id="1_iissx"]
+
+[resource]
+script = ExtResource("1_iissx")
+name = "Character 2"
+metadata/_custom_type_script = "uid://cvakngavwvvtn"
