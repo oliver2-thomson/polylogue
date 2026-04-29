@@ -34,7 +34,7 @@ func get_state():
 func choose_node_to_spawn(_state: Dictionary):
 	show()
 	show_popup()
-	grab_focus()
+	# grab_focus()
 	state = _state
 
 
