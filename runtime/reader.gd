@@ -14,6 +14,7 @@ signal branch_requested(condition: String, payload: Variant)
 func start():
 	if conversation == null:
 		printerr("Start called with no conversation set")
+		exit("Start called with no conversation set")
 		return
 	
 	if conversation.get_start_node_id() == 0:

@@ -11,11 +11,11 @@ extends Control
 
 
 func _on_start_button_pressed() -> void:
-	reader.start()
 	character_title_label.show()
 	dialogue_label.show()
 	advance_button.show()
 	start_button.hide()
+	reader.start()
 
 func _on_advance_button_pressed() -> void:
 	reader.advance()
