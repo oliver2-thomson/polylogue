@@ -6,7 +6,7 @@ class_name PolylogueNodeBase
 
 signal request_redraw()
 
-@export var uid: int
+var uid: int
 @export var position: Vector2 = Vector2(0, 0)
 
 @export var input_slots: Array[int] = [0]

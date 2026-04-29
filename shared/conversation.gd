@@ -8,7 +8,7 @@ class_name Conversation
 @export var start_node_id: int
 
 @export_group("")
-@export var nodes: Dictionary[int, PolylogueNodeBase]
+var nodes: Dictionary[int, PolylogueNodeBase]
 
 func _init() -> void:
 	if nodes.size() > 0: return # Early return for conversations that have already been initialised
@@ -26,6 +26,9 @@ func add_node(node: PolylogueNodeBase) -> int:
 	node.set_uid(id)
 	nodes[id] = node
 	return id
+	
+func get_nodes() -> Dictionary[int, PolylogueNodeBase]:
+	return nodes
 	
 func remove_node(index: int):
 	nodes.erase(index)

@@ -66,7 +66,6 @@ func _edit(object: Object) -> void:
 	if object is Conversation:
 		main_panel_instance.set_conversation(object)
 		_make_visible(true)
-		print(object.resource_path)
 
 func _update_instantiable_node_types():
 	instantiable_node_types = {}
