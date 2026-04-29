@@ -6,7 +6,6 @@ const MainPanel = preload("res://addons/polylogue/editor/polylogue_main_panel.ts
 
 var main_panel_instance: PolylogueMainPanel
 static var instantiable_node_types: Dictionary = {}
-var global_class_list: Array[Dictionary] = []
 
 func _enable_plugin() -> void:
 	pass
@@ -70,24 +69,24 @@ func _edit(object: Object) -> void:
 		print(object.resource_path)
 
 func _update_instantiable_node_types():
-	#print("Reloading node based types")
 	instantiable_node_types = {}
-	global_class_list= ProjectSettings.get_global_class_list()
+	var target_class: Script = preload("res://addons/polylogue/shared/nodes/polylogue_node_base.gd")
+	var global_class_list: Array[Dictionary] = ProjectSettings.get_global_class_list()
+	
 	for dict in global_class_list:
-		if _test_if_derivitive_of_class(dict, "PolylogueNodeBase"):
-			instantiable_node_types[dict.get("class")] = load(dict.get("path"))
-	#print("{0} PolylogueNodeBase derivatives".format([instantiable_node_types.size()]))
-	#print(instantiable_node_types.keys())
+		var script: Script = load(dict.get("path"))
+		if !script.is_abstract():
+			if _test_if_derivitive_of_class(script, target_class):
+				instantiable_node_types[dict.get("class")] = script
 	
+func _test_if_derivitive_of_class(test_class: Script, target_class: Script) -> bool:	
+	if test_class == target_class: return true
 	
-func _test_if_derivitive_of_class(test_class: Dictionary, base_class: String) -> bool:	
-	var base: String = test_class.get("base")
+	var base_script: Script = test_class.get_base_script()
+	if base_script == null: return false
 	
-	if base == base_class: return true
-	
-	for entry in global_class_list:
-		if entry.get("class") == base:
-			return _test_if_derivitive_of_class(entry, base_class)
+	if _test_if_derivitive_of_class(test_class.get_base_script(), target_class):
+		return true
 	
 	return false
 	

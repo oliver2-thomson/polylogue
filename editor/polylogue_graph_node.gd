@@ -23,7 +23,7 @@ func _init(_conversation_node: PolylogueNodeBase):
 	for i in len(conversation_node.get_output_slots()):
 		if conversation_node.get_output_slots()[i] != -1: set_slot_enabled_right(i, true)
 		
-	var custom_control = conversation_node.add_custom_controls()
+	var custom_control = conversation_node.add_custom_controls(VBoxContainer.new())
 	if custom_control != null:
 		add_child(custom_control)
 		

@@ -35,7 +35,6 @@ func redraw():
 		nodes_dict[key] = node
 		add_child(node)
 		node.conversation_node.request_redraw.connect(redraw)
-		node.conversation_node.request_delete.connect(_delete_single_node)
 		
 
 	#print("Nodes: {0}".format([nodes]))
@@ -55,7 +54,6 @@ func clear():
 		if exempt_from_clear.has(child.name): continue
 		if child is PolylogueGraphNode:
 			child.conversation_node.request_redraw.disconnect(redraw)
-			child.conversation_node.request_delete.disconnect(_delete_single_node)
 		child.queue_free()
 
 
@@ -69,21 +67,6 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.keycode == KEY_S && event.is_command_or_control_pressed():
 			redraw()
-			
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_MIDDLE:
-			is_panning = event.pressed
-			last_mouse_pos = event.position
-			accept_event()
-			
-		#if event.button_index == MOUSE_BUTTON_RIGHT and event.pressed:
-			#_on_popup_request(get_local_mouse_position())
-
-	elif event is InputEventMouseMotion and is_panning:
-		var delta: Vector2 = event.position - last_mouse_pos
-		scroll_offset -= delta / zoom
-		last_mouse_pos = event.position
-		accept_event()
 
 func _on_connection_to_empty(from_node: StringName, from_port: int, release_position: Vector2) -> void:
 	# create popup listing all classes
@@ -139,17 +122,6 @@ func _on_node_deselected(node: Node) -> void:
 	if node is PolylogueGraphNode:
 		if node.conversation_node.open_inspector_on_select():
 			EditorInterface.edit_node(null)
-
-func _delete_single_node(_uid: int):
-	var node_string_name = ""
-	for node in nodes_dict.values():
-		if node is PolylogueGraphNode:
-			if node.conversation_node.uid == _uid:
-				node_string_name = node.name
-				break
-	
-	if node_string_name != "":
-		_on_delete_nodes_request([node_string_name])
 
 func _on_delete_nodes_request(nodes: Array[StringName]) -> void:
 	# print("Deleting {0} nodes".format([len(nodes)]))
