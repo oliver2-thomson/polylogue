@@ -10,8 +10,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Reader" type="Node" parent="." unique_id=2062621100]
 script = ExtResource("1_ypk6p")
 conversation = ExtResource("2_8mqvf")
+metadata/_custom_type_script = "uid://kspoaymatdjf"
 
 [node name="WarningLabel" type="Label" parent="." unique_id=1095588304]
 layout_mode = 1
@@ -22,7 +25,7 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
-text = "This demo scene is set up to show how the dialogue can be integrated with the world by extending the Reader node. 
+text = "This demo scene is set up to show how the dialogue can be integrated with the world by adding our own script to extend the Reader node. 
 It does not have any Branch or Signal handling implemented. 
 Signals will print to the console and Branches will default to false
 You can replace the conversation in the editor by selecting the ReaderExtendedScene node and setting a new Conversation"
@@ -63,7 +66,9 @@ visible = false
 layout_mode = 2
 text = "Advance Conversation"
 
-[connection signal="exited" from="." to="." method="_on_exited"]
-[connection signal="node_ready" from="." to="." method="_on_node_ready"]
-[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/AdvanceButton" to="." method="_on_advance_button_pressed"]
+[connection signal="branch_requested" from="Reader" to="Reader" method="_on_branch_requested"]
+[connection signal="exited" from="Reader" to="Reader" method="_on_exited"]
+[connection signal="node_ready" from="Reader" to="Reader" method="_on_node_ready"]
+[connection signal="polylogue_signal_emitted" from="Reader" to="Reader" method="_on_polylogue_signal_emitted"]
+[connection signal="pressed" from="VBoxContainer/StartButton" to="Reader" method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/AdvanceButton" to="Reader" method="_on_advance_button_pressed"]
