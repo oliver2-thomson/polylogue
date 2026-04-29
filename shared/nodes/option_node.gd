@@ -72,11 +72,17 @@ func equalise_options():
 	# print("End -> len(options): {0}, len(output_slots): {1}".format([len(options), len(output_slots)]))
 				
 				
-func add_inline_controls(index: int) -> Control:
+func add_inline_controls(controls: HBoxContainer, index: int) -> HBoxContainer:
+	controls = super.add_inline_controls(controls, index)
+	
 	var line_edit = LineEdit.new()
 	line_edit.text = options[index]
 	line_edit.text_changed.connect(_set_option.bind(index))
-	return line_edit
+	line_edit.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	
+	controls.add_child(line_edit)
+	
+	return controls
 	
 func _set_option(value: String, index: int):
 	if index < len(options):

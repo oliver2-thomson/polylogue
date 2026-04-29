@@ -14,8 +14,9 @@ func _init(_conversation_node: PolylogueNodeBase):
 	var max = max(len(conversation_node.get_input_slots()), len(conversation_node.get_output_slots()))
 	
 	for i in range(max):
-		var control = conversation_node.add_inline_controls(i)
-		if control == null: control = Label.new()
+		var control = conversation_node.add_inline_controls(HBoxContainer.new(), i)
+		control.alignment = BoxContainer.ALIGNMENT_CENTER
+		
 		add_child(control)
 		
 	for i in len(conversation_node.get_input_slots()):
