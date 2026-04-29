@@ -1,30 +1,34 @@
-extends Reader
+extends Control
 
 
-@onready var character_title_label: Label = $"../VBoxContainer/CharacterTitleLabel"
-@onready var dialogue_label: Label = $"../VBoxContainer/DialogueLabel"
-@onready var options_box: VBoxContainer = $"../VBoxContainer/OptionsBox"
-@onready var start_button: Button = $"../VBoxContainer/StartButton"
-@onready var advance_button: Button = $"../VBoxContainer/AdvanceButton"
+@onready var character_title_label: Label = $VBoxContainer/CharacterTitleLabel
+@onready var dialogue_label: Label = $VBoxContainer/DialogueLabel
+@onready var options_box: VBoxContainer = $VBoxContainer/OptionsBox
+@onready var start_button: Button = $VBoxContainer/StartButton
+@onready var advance_button: Button = $VBoxContainer/AdvanceButton
+
+@onready var reader: Reader = $Reader
 
 
 func _on_start_button_pressed() -> void:
-	start()
+	reader.start()
 	character_title_label.show()
 	dialogue_label.show()
 	advance_button.show()
 	start_button.hide()
 
 func _on_advance_button_pressed() -> void:
-	advance()
+	reader.advance()
 
-func _on_exited(reason: String) -> void:
+
+func _on_reader_exited(reason: String) -> void:
 	start_button.show()
 	character_title_label.hide()
 	dialogue_label.hide()
 	advance_button.hide()
 
-func _on_node_ready(node: PolylogueNodeBase) -> void:
+
+func _on_reader_node_ready(node: PolylogueNodeBase) -> void:
 	# Reset the UI
 	character_title_label.text = ""
 	dialogue_label.text = ""
@@ -43,10 +47,12 @@ func _on_node_ready(node: PolylogueNodeBase) -> void:
 					var option = node.get_options()[option_index]
 					var new_button = Button.new()
 					new_button.text = option
-					new_button.pressed.connect(advance.bind(option_index))
+					new_button.pressed.connect(reader.advance.bind(option_index))
 
-func _on_polylogue_signal_emitted(event_name: String, payload: Variant) -> void:
+
+func _on_reader_polylogue_signal_emitted(event_name: String, payload: Variant) -> void:
 	print("Signal: {0} emitted with payload: {1}".format([event_name, payload]))
 
-func _on_branch_requested(condition: String, payload: Variant) -> void:
-	advance(false)
+
+func _on_reader_branch_requested(condition: String, payload: Variant) -> void:
+	reader.advance(false)
