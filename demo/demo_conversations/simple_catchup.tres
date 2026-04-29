@@ -1,0 +1,52 @@
+[gd_resource type="Resource" script_class="Conversation" format=3 uid="uid://bj8b4ti5a75i0"]
+
+[ext_resource type="Script" uid="uid://b4snm0d1xpg4j" path="res://addons/polylogue/shared/nodes/polylogue_node_base.gd" id="1_ry2y2"]
+[ext_resource type="Script" uid="uid://l8wv1btxtkbo" path="res://addons/polylogue/shared/nodes/start_node.gd" id="2_mjwpd"]
+[ext_resource type="Script" uid="uid://uuhcmgjgntf8" path="res://addons/polylogue/shared/conversation.gd" id="3_0yepd"]
+[ext_resource type="Resource" uid="uid://yy0iu4pcdnwk" path="res://addons/polylogue/demo/demo_characters/character_1.tres" id="3_7cls2"]
+[ext_resource type="Script" uid="uid://bj8h34ubewjk6" path="res://addons/polylogue/shared/nodes/line_node.gd" id="3_mjwpd"]
+[ext_resource type="Resource" uid="uid://2u48ou3ygqpk" path="res://addons/polylogue/demo/demo_characters/character_2.tres" id="5_7cls2"]
+[ext_resource type="Script" uid="uid://rp8pujfgrpwe" path="res://addons/polylogue/shared/nodes/end_node.gd" id="6_nhlk3"]
+
+[sub_resource type="Resource" id="Resource_7cls2"]
+script = ExtResource("2_mjwpd")
+input_slots = Array[int]([-1])
+output_slots = Array[int]([1248288484758870962])
+
+[sub_resource type="Resource" id="Resource_0yepd"]
+script = ExtResource("3_mjwpd")
+line = "Hello Character 2! How is your family doing?"
+character = ExtResource("3_7cls2")
+position = Vector2(280, 0)
+output_slots = Array[int]([2780111361685443118])
+
+[sub_resource type="Resource" id="Resource_nhlk3"]
+script = ExtResource("3_mjwpd")
+line = "They are doing amazing! My wife has just run a marathon and my son is starring in the school play!"
+character = ExtResource("5_7cls2")
+position = Vector2(940, 0)
+output_slots = Array[int]([6842953735185405368])
+
+[sub_resource type="Resource" id="Resource_y24wx"]
+script = ExtResource("3_mjwpd")
+line = "That is wonderful to hear!"
+character = ExtResource("3_7cls2")
+position = Vector2(1600, 0)
+output_slots = Array[int]([7174900207263447669])
+
+[sub_resource type="Resource" id="Resource_s2nq3"]
+script = ExtResource("6_nhlk3")
+position = Vector2(2260, 0)
+output_slots = Array[int]([-1])
+
+[resource]
+script = ExtResource("3_0yepd")
+start_node_id = 1118079990765876721
+nodes = Dictionary[int, ExtResource("1_ry2y2")]({
+1118079990765876721: SubResource("Resource_7cls2"),
+1248288484758870962: SubResource("Resource_0yepd"),
+2780111361685443118: SubResource("Resource_nhlk3"),
+6842953735185405368: SubResource("Resource_y24wx"),
+7174900207263447669: SubResource("Resource_s2nq3")
+})
+metadata/_custom_type_script = "uid://uuhcmgjgntf8"

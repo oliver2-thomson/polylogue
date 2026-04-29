@@ -1,0 +1,129 @@
+[gd_scene format=3 uid="uid://dhjmw4gp55t8v"]
+
+[ext_resource type="Script" uid="uid://bd1vebnrfocsm" path="res://addons/polylogue/demo/demo_scenes/signal_demo.gd" id="1_x76sf"]
+[ext_resource type="Texture2D" uid="uid://y3qvvkahq61h" path="res://addons/polylogue/demo/demo_assets/lightbulb_off.png" id="2_kulni"]
+[ext_resource type="Resource" uid="uid://dvbes2gqimy10" path="res://addons/polylogue/demo/demo_conversations/signal_demo.tres" id="2_slpgk"]
+[ext_resource type="Texture2D" uid="uid://csclk6kwq80hf" path="res://addons/polylogue/demo/demo_assets/dollar.png" id="3_slpgk"]
+[ext_resource type="Texture2D" uid="uid://d0kko6kye7q2u" path="res://addons/polylogue/demo/demo_assets/dog.png" id="4_x75o1"]
+
+[node name="SignalDemo" type="Control" unique_id=645010375]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x76sf")
+conversation = ExtResource("2_slpgk")
+
+[node name="WarningLabel" type="Label" parent="." unique_id=1256305173]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "This demo scene is set up to show how the Signal node works.
+Each Signal node has a EventName and optional Payload.
+For each EventName that is set up in a conversation a matching case should be implemented in the script that listens to the Reader node.
+Have a look at the script attached to the SignalDemo node in the scene heirarchy to see how this looks"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=380546079]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterTitleLabel" type="Label" parent="VBoxContainer" unique_id=748244276]
+visible = false
+layout_mode = 2
+
+[node name="DialogueLabel" type="Label" parent="VBoxContainer" unique_id=1193085349]
+visible = false
+layout_mode = 2
+
+[node name="OptionsBox" type="VBoxContainer" parent="VBoxContainer" unique_id=570267750]
+visible = false
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1443760367]
+layout_mode = 2
+text = "Start Conversation"
+
+[node name="AdvanceButton" type="Button" parent="VBoxContainer" unique_id=1985861754]
+visible = false
+layout_mode = 2
+text = "Advance Conversation"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1527406161]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer" unique_id=1144097227]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=1617640905]
+layout_mode = 2
+text = "Money"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer2" unique_id=215204763]
+layout_mode = 2
+texture = ExtResource("3_slpgk")
+
+[node name="MoneyLabel" type="Label" parent="HBoxContainer/VBoxContainer2" unique_id=781112108]
+layout_mode = 2
+text = "You have 100 Money"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=171085033]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer" unique_id=1797418559]
+layout_mode = 2
+text = "Lightbulb"
+horizontal_alignment = 1
+
+[node name="LightbulbTextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer" unique_id=1637938490]
+layout_mode = 2
+texture = ExtResource("2_kulni")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="HBoxContainer" unique_id=1856246932]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer3" unique_id=532254445]
+layout_mode = 2
+text = "Dog"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer3" unique_id=163365641]
+layout_mode = 2
+texture = ExtResource("4_x75o1")
+
+[node name="DogNameLabel" type="Label" parent="HBoxContainer/VBoxContainer3" unique_id=80092234]
+layout_mode = 2
+text = "The dog is called: "
+
+[connection signal="branch_requested" from="." to="." method="_on_branch_requested"]
+[connection signal="exited" from="." to="." method="_on_exited"]
+[connection signal="node_ready" from="." to="." method="_on_node_ready"]
+[connection signal="polylogue_signal_emitted" from="." to="." method="_on_polylogue_signal_emitted"]
+[connection signal="started" from="." to="." method="_on_started"]
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/AdvanceButton" to="." method="_on_advance_button_pressed"]

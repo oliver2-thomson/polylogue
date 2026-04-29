@@ -1,12 +1,15 @@
 extends Reader
 
+@export var character_title_label: Label
+@export var dialogue_label: Label
+@export var options_box: VBoxContainer
+@export var start_button: Button
+@export var advance_button: Button
 
-@onready var character_title_label: Label = $"../VBoxContainer/CharacterTitleLabel"
-@onready var dialogue_label: Label = $"../VBoxContainer/DialogueLabel"
-@onready var options_box: VBoxContainer = $"../VBoxContainer/OptionsBox"
-@onready var start_button: Button = $"../VBoxContainer/StartButton"
-@onready var advance_button: Button = $"../VBoxContainer/AdvanceButton"
 
+func _ready() -> void:
+	start_button.pressed.connect(_on_start_button_pressed)
+	advance_button.pressed.connect(_on_advance_button_pressed)
 
 func _on_start_button_pressed() -> void:
 	start()
@@ -27,6 +30,7 @@ func _on_exited(reason: String) -> void:
 	dialogue_label.hide()
 	advance_button.hide()
 	options_box.hide()
+
 
 func _on_node_ready(node: PolylogueNodeBase) -> void:
 	# Reset the UI
@@ -49,8 +53,10 @@ func _on_node_ready(node: PolylogueNodeBase) -> void:
 					new_button.text = option
 					new_button.pressed.connect(advance.bind(option_index))
 
+
 func _on_polylogue_signal_emitted(event_name: String, payload: Variant) -> void:
 	print("Signal: {0} emitted with payload: {1}".format([event_name, payload]))
+
 
 func _on_branch_requested(condition: String, payload: Variant) -> void:
 	advance(false)

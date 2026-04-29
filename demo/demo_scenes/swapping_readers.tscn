@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://cay5dcwa7oj1d"]
+
+[ext_resource type="Script" uid="uid://nq341bpkbu0s" path="res://addons/polylogue/demo/demo_scenes/swapping_readers.gd" id="1_nm02r"]
+[ext_resource type="Script" uid="uid://kspoaymatdjf" path="res://addons/polylogue/runtime/reader.gd" id="2_d513x"]
+[ext_resource type="Resource" uid="uid://ccxbvhoj6q2fd" path="res://addons/polylogue/demo/demo_conversations/simple_greeting.tres" id="3_04ax5"]
+[ext_resource type="Resource" uid="uid://bj8b4ti5a75i0" path="res://addons/polylogue/demo/demo_conversations/simple_catchup.tres" id="4_gj5hx"]
+[ext_resource type="Resource" uid="uid://bfic85o6u3gba" path="res://addons/polylogue/demo/demo_conversations/simple_fight.tres" id="5_plo7i"]
+
+[node name="SwappingReaders" type="Control" unique_id=270637657 node_paths=PackedStringArray("current_reader")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nm02r")
+current_reader = NodePath("HBoxContainer/Conversation1Button/Conversation1Reader")
+
+[node name="WarningLabel" type="Label" parent="." unique_id=1224907644]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "This demo scene is set up to show how multiple readers can be set up to hotswap conversations. This is not an encouraged behaviour but in
+Some circumstances it may be appropriate.
+Have a look at the script attached to the SwappingReaders node to see how this is done."
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=215018819]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterTitleLabel" type="Label" parent="VBoxContainer" unique_id=1461509577]
+visible = false
+layout_mode = 2
+
+[node name="DialogueLabel" type="Label" parent="VBoxContainer" unique_id=1822955534]
+visible = false
+layout_mode = 2
+
+[node name="OptionsBox" type="VBoxContainer" parent="VBoxContainer" unique_id=178886905]
+visible = false
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1883587035]
+layout_mode = 2
+text = "Start Conversation"
+
+[node name="AdvanceButton" type="Button" parent="VBoxContainer" unique_id=1505744600]
+visible = false
+layout_mode = 2
+text = "Advance Conversation"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1157837306]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Conversation1Button" type="Button" parent="HBoxContainer" unique_id=1623747307]
+layout_mode = 2
+text = "Simple Greeting"
+
+[node name="Conversation1Reader" type="Node" parent="HBoxContainer/Conversation1Button" unique_id=912042617]
+script = ExtResource("2_d513x")
+conversation = ExtResource("3_04ax5")
+metadata/_custom_type_script = "uid://kspoaymatdjf"
+
+[node name="Conversation2Button" type="Button" parent="HBoxContainer" unique_id=1614266126]
+layout_mode = 2
+text = "Simple catchup"
+
+[node name="Conversation2Reader" type="Node" parent="HBoxContainer/Conversation2Button" unique_id=1571849747]
+script = ExtResource("2_d513x")
+conversation = ExtResource("4_gj5hx")
+metadata/_custom_type_script = "uid://kspoaymatdjf"
+
+[node name="Conversation3Button" type="Button" parent="HBoxContainer" unique_id=1482177943]
+layout_mode = 2
+text = "Simple fight"
+
+[node name="Conversation3Reader" type="Node" parent="HBoxContainer/Conversation3Button" unique_id=1016181258]
+script = ExtResource("2_d513x")
+conversation = ExtResource("5_plo7i")
+metadata/_custom_type_script = "uid://kspoaymatdjf"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/AdvanceButton" to="." method="_on_advance_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Conversation1Button" to="." method="_on_conversation_1_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Conversation2Button" to="." method="_on_conversation_2_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Conversation3Button" to="." method="_on_conversation_3_button_pressed"]

@@ -1,0 +1,60 @@
+[gd_resource type="Resource" script_class="Conversation" format=3 uid="uid://djc6jmx5x88l0"]
+
+[ext_resource type="Script" uid="uid://b4snm0d1xpg4j" path="res://addons/polylogue/shared/nodes/polylogue_node_base.gd" id="1_0w7c0"]
+[ext_resource type="Script" uid="uid://l8wv1btxtkbo" path="res://addons/polylogue/shared/nodes/start_node.gd" id="2_20emf"]
+[ext_resource type="Script" uid="uid://bj8h34ubewjk6" path="res://addons/polylogue/shared/nodes/line_node.gd" id="3_20emf"]
+[ext_resource type="Resource" uid="uid://yy0iu4pcdnwk" path="res://addons/polylogue/demo/demo_characters/character_1.tres" id="3_lecjf"]
+[ext_resource type="Script" uid="uid://uuhcmgjgntf8" path="res://addons/polylogue/shared/conversation.gd" id="3_mn30x"]
+[ext_resource type="Script" uid="uid://cjku1th4mqwnx" path="res://addons/polylogue/shared/nodes/branch_node.gd" id="5_lecjf"]
+[ext_resource type="Script" uid="uid://rp8pujfgrpwe" path="res://addons/polylogue/shared/nodes/end_node.gd" id="6_wtj30"]
+
+[sub_resource type="Resource" id="Resource_c3ynp"]
+script = ExtResource("3_20emf")
+line = "The check box is enabled"
+character = ExtResource("3_lecjf")
+position = Vector2(1260, 0)
+output_slots = Array[int]([2073460218293477741])
+
+[sub_resource type="Resource" id="Resource_2cgc5"]
+script = ExtResource("6_wtj30")
+position = Vector2(1900, 60)
+output_slots = Array[int]([-1])
+
+[sub_resource type="Resource" id="Resource_v03nq"]
+script = ExtResource("3_20emf")
+line = "The check box is disabled"
+character = ExtResource("3_lecjf")
+position = Vector2(1260, 340)
+output_slots = Array[int]([2073460218293477741])
+
+[sub_resource type="Resource" id="Resource_lecjf"]
+script = ExtResource("2_20emf")
+input_slots = Array[int]([-1])
+output_slots = Array[int]([5170308817537114484])
+
+[sub_resource type="Resource" id="Resource_mn30x"]
+script = ExtResource("3_20emf")
+line = "The status of the check box at the bottom of the screen will be tested when you press the advance button"
+character = ExtResource("3_lecjf")
+position = Vector2(280, 0)
+output_slots = Array[int]([7709457754139357489])
+
+[sub_resource type="Resource" id="Resource_wtj30"]
+script = ExtResource("5_lecjf")
+string_identifier = "TEST_CHECK_BUTTON"
+payload = null
+position = Vector2(940, 0)
+output_slots = Array[int]([1173961089259316930, 3540922477164205942])
+
+[resource]
+script = ExtResource("3_mn30x")
+start_node_id = 4534188622742816669
+nodes = Dictionary[int, ExtResource("1_0w7c0")]({
+1173961089259316930: SubResource("Resource_c3ynp"),
+2073460218293477741: SubResource("Resource_2cgc5"),
+3540922477164205942: SubResource("Resource_v03nq"),
+4534188622742816669: SubResource("Resource_lecjf"),
+5170308817537114484: SubResource("Resource_mn30x"),
+7709457754139357489: SubResource("Resource_wtj30")
+})
+metadata/_custom_type_script = "uid://uuhcmgjgntf8"

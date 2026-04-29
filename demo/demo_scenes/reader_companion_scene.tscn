@@ -29,8 +29,7 @@ offset_bottom = 23.0
 grow_horizontal = 2
 text = "This demo scene is set up to show how the dialogue can be integrated with the world by adding our script 
 to a game object that listens to an external Reader node. 
-It does not have any Branch or Signal handling implemented. 
-Signals will print to the console and Branches will default to false
+Have a look at the script attached to the ReaderCompanionScene node to see how this looks
 You can replace the conversation in the editor by selecting the ReaderExtendedScene node and setting a new Conversation"
 horizontal_alignment = 1
 
@@ -73,5 +72,6 @@ text = "Advance Conversation"
 [connection signal="exited" from="Reader" to="." method="_on_reader_exited"]
 [connection signal="node_ready" from="Reader" to="." method="_on_reader_node_ready"]
 [connection signal="polylogue_signal_emitted" from="Reader" to="." method="_on_reader_polylogue_signal_emitted"]
+[connection signal="started" from="Reader" to="." method="_on_reader_started"]
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/AdvanceButton" to="." method="_on_advance_button_pressed"]

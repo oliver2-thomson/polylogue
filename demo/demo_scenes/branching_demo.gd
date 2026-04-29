@@ -6,12 +6,14 @@ extends Control
 @onready var options_box: VBoxContainer = $VBoxContainer/OptionsBox
 @onready var start_button: Button = $VBoxContainer/StartButton
 @onready var advance_button: Button = $VBoxContainer/AdvanceButton
+@onready var check_button: CheckButton = $CheckButton
 
 @onready var reader: Reader = $Reader
 
 
 func _on_start_button_pressed() -> void:
 	reader.start()
+
 
 func _on_advance_button_pressed() -> void:
 	reader.advance()
@@ -30,9 +32,8 @@ func _on_reader_exited(reason: String) -> void:
 	advance_button.hide()
 	options_box.hide()
 
-
 func _on_reader_node_ready(node: PolylogueNodeBase) -> void:
-	# Reset the UI
+		# Reset the UI
 	character_title_label.text = ""
 	dialogue_label.text = ""
 	advance_button.show()
@@ -58,4 +59,9 @@ func _on_reader_polylogue_signal_emitted(event_name: String, payload: Variant) -
 
 
 func _on_reader_branch_requested(condition: String, payload: Variant) -> void:
+	if condition == "TEST_CHECK_BUTTON":
+		reader.advance(check_button.button_pressed)
+		return
+	
+	printerr("No match found for branch request: {0}".format([condition]))
 	reader.advance(false)

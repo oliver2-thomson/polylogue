@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://63c5gmcv11np"]
+
+[ext_resource type="Script" uid="uid://b0nneh53ntih2" path="res://addons/polylogue/demo/demo_scenes/reader_exported_fields.gd" id="1_fyh2l"]
+[ext_resource type="Resource" uid="uid://ccxbvhoj6q2fd" path="res://addons/polylogue/demo/demo_conversations/simple_greeting.tres" id="2_1yc5d"]
+
+[node name="ReaderExportedFields" type="Control" unique_id=238047799]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Reader" type="Node" parent="." unique_id=547147071 node_paths=PackedStringArray("character_title_label", "dialogue_label", "options_box", "start_button", "advance_button")]
+script = ExtResource("1_fyh2l")
+character_title_label = NodePath("../VBoxContainer/CharacterTitleLabel")
+dialogue_label = NodePath("../VBoxContainer/DialogueLabel")
+options_box = NodePath("../VBoxContainer/OptionsBox")
+start_button = NodePath("../VBoxContainer/StartButton")
+advance_button = NodePath("../VBoxContainer/AdvanceButton")
+conversation = ExtResource("2_1yc5d")
+metadata/_custom_type_script = "uid://kspoaymatdjf"
+
+[node name="WarningLabel" type="Label" parent="." unique_id=1353139534]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "This demo scene is set up to show how the Reader can be extended 
+to have @export fields for the apropriate controls and labels
+Have a look at the script attached to the Reader node in the scene heirarchy to see how this looks
+You can replace the conversation in the editor by selecting the ReaderExtendedScene node and setting a new Conversation"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=439550024]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterTitleLabel" type="Label" parent="VBoxContainer" unique_id=2025212427]
+visible = false
+layout_mode = 2
+
+[node name="DialogueLabel" type="Label" parent="VBoxContainer" unique_id=1968215592]
+visible = false
+layout_mode = 2
+
+[node name="OptionsBox" type="VBoxContainer" parent="VBoxContainer" unique_id=1217778183]
+visible = false
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1178194575]
+layout_mode = 2
+text = "Start Conversation"
+
+[node name="AdvanceButton" type="Button" parent="VBoxContainer" unique_id=500146388]
+visible = false
+layout_mode = 2
+text = "Advance Conversation"
+
+[connection signal="branch_requested" from="Reader" to="Reader" method="_on_branch_requested"]
+[connection signal="exited" from="Reader" to="Reader" method="_on_exited"]
+[connection signal="node_ready" from="Reader" to="Reader" method="_on_node_ready"]
+[connection signal="polylogue_signal_emitted" from="Reader" to="Reader" method="_on_polylogue_signal_emitted"]
+[connection signal="started" from="Reader" to="Reader" method="_on_started"]

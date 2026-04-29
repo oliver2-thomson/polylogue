@@ -2,6 +2,7 @@ extends Node
 class_name Reader
 
 signal exited(reason: String)
+signal started()
 signal node_ready(node: PolylogueNodeBase)
 signal polylogue_signal_emitted(event_name: String, payload: Variant)
 signal branch_requested(condition: String, payload: Variant)
@@ -14,6 +15,7 @@ signal branch_requested(condition: String, payload: Variant)
 func start():
 	if conversation == null:
 		printerr("Start called with no conversation set")
+		exit("Start called with no conversation set")
 		return
 	
 	if conversation.get_start_node_id() == 0:
@@ -22,6 +24,7 @@ func start():
 	
 	running = true
 	current_node_index = conversation.get_start_node_id()
+	started.emit()
 	advance()
 
 
