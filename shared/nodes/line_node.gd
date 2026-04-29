@@ -5,17 +5,17 @@ class_name LineNode
 
 @export var line: String
 
-func add_custom_controls() -> VBoxContainer:
-	var parent_class_controls := super.add_custom_controls()
+func add_custom_controls(controls: VBoxContainer) -> VBoxContainer:
+	controls = super.add_custom_controls(controls)
 	
 	var text_area = LineEdit.new()
 	text_area.custom_minimum_size = Vector2(500, 100)
 	text_area.text = line
 	text_area.text_changed.connect(_change_line)
 
-	parent_class_controls.add_child(text_area)
+	controls.add_child(text_area)
 	
-	return parent_class_controls
+	return controls
 	
 	
 func _change_line(_line: String):
