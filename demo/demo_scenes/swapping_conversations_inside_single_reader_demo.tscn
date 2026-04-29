@@ -30,10 +30,9 @@ offset_left = -20.0
 offset_right = 20.0
 offset_bottom = 23.0
 grow_horizontal = 2
-text = "This demo scene is set up to show how the Reader can be extended 
-to have @export fields for the apropriate controls and labels
-Have a look at the script attached to the Reader node in the scene heirarchy to see how this looks
-You can replace the conversation in the editor by selecting the ReaderExtendedScene node and setting a new Conversation"
+text = "This demo scene is set up to show how the Reader can swap between conversations at runtime.
+The Reader starts off with the simple greeting but pressing any of the buttons at the bottom of the scene will change the current conversation.
+Give it a go and be sure to look at the script attached to the reader node to see how it works!"
 horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=239774262]
