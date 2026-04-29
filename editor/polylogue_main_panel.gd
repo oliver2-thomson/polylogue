@@ -35,7 +35,6 @@ func redraw():
 		nodes_dict[key] = node
 		add_child(node)
 		node.conversation_node.request_redraw.connect(redraw)
-		node.conversation_node.request_delete.connect(_delete_single_node)
 		
 
 	#print("Nodes: {0}".format([nodes]))
