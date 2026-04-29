@@ -12,20 +12,24 @@ func _ready() -> void:
 	advance_button.pressed.connect(_on_advance_button_pressed)
 
 func _on_start_button_pressed() -> void:
-	character_title_label.show()
-	dialogue_label.show()
-	advance_button.show()
-	start_button.hide()
 	start()
 
 func _on_advance_button_pressed() -> void:
 	advance()
+	
+func _on_started() -> void:
+	character_title_label.show()
+	dialogue_label.show()
+	advance_button.show()
+	start_button.hide()
+	options_box.hide()
 
 func _on_exited(reason: String) -> void:
 	start_button.show()
 	character_title_label.hide()
 	dialogue_label.hide()
 	advance_button.hide()
+	options_box.hide()
 
 
 func _on_node_ready(node: PolylogueNodeBase) -> void:

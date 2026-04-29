@@ -71,7 +71,6 @@ func _update_instantiable_node_types():
 	instantiable_node_types = {}
 	var target_class: Script = preload("res://addons/polylogue/shared/nodes/polylogue_node_base.gd")
 	var global_class_list: Array[Dictionary] = ProjectSettings.get_global_class_list()
-	
 	for dict in global_class_list:
 		var script: Script = load(dict.get("path"))
 		if !script.is_abstract():

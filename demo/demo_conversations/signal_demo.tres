@@ -1,0 +1,136 @@
+[gd_resource type="Resource" script_class="Conversation" format=3 uid="uid://dvbes2gqimy10"]
+
+[ext_resource type="Script" uid="uid://b4snm0d1xpg4j" path="res://addons/polylogue/shared/nodes/polylogue_node_base.gd" id="1_8hajb"]
+[ext_resource type="Script" uid="uid://l8wv1btxtkbo" path="res://addons/polylogue/shared/nodes/start_node.gd" id="2_g2sre"]
+[ext_resource type="Script" uid="uid://uuhcmgjgntf8" path="res://addons/polylogue/shared/conversation.gd" id="3_6wm0l"]
+[ext_resource type="Script" uid="uid://dpocy2flyfyta" path="res://addons/polylogue/shared/nodes/option_node.gd" id="3_g2sre"]
+[ext_resource type="Resource" uid="uid://yy0iu4pcdnwk" path="res://addons/polylogue/demo/demo_characters/character_1.tres" id="3_rsykm"]
+[ext_resource type="Script" uid="uid://btb0vv4opgsfu" path="res://addons/polylogue/shared/nodes/signal_node.gd" id="5_rsykm"]
+[ext_resource type="Script" uid="uid://rp8pujfgrpwe" path="res://addons/polylogue/shared/nodes/end_node.gd" id="6_wgdfo"]
+
+[sub_resource type="Resource" id="Resource_rsykm"]
+script = ExtResource("2_g2sre")
+input_slots = Array[int]([-1])
+output_slots = Array[int]([7578047972800317945])
+
+[sub_resource type="Resource" id="Resource_6wm0l"]
+script = ExtResource("3_g2sre")
+options = Array[String](["Money (integer)", "Lighbulb (boolean)", "Name the dog (string)"])
+line = "This is a signal demo. Choose which object you would like to interact with"
+character = ExtResource("3_rsykm")
+position = Vector2(280, 0)
+output_slots = Array[int]([2812427652329307154, 1308700966774384875, 304294671890870297])
+
+[sub_resource type="Resource" id="Resource_wgdfo"]
+script = ExtResource("3_g2sre")
+options = Array[String](["On", "Off"])
+line = "What state would you like to set the lightbulb to?"
+character = ExtResource("3_rsykm")
+position = Vector2(940, 660)
+output_slots = Array[int]([1247580582769336010, 1021333332237699992])
+
+[sub_resource type="Resource" id="Resource_x73lc"]
+script = ExtResource("5_rsykm")
+string_identifier = "SET_LIGHTBULB_STATE"
+payload = true
+position = Vector2(1600, 660)
+output_slots = Array[int]([6313491276682625985])
+
+[sub_resource type="Resource" id="Resource_ga6f7"]
+script = ExtResource("5_rsykm")
+string_identifier = "SET_LIGHTBULB_STATE"
+payload = false
+position = Vector2(1600, 860)
+output_slots = Array[int]([6313491276682625985])
+
+[sub_resource type="Resource" id="Resource_gx8l6"]
+script = ExtResource("3_g2sre")
+options = Array[String](["5", "10", "30", "75"])
+line = "How much money would you like to spend?"
+character = ExtResource("3_rsykm")
+position = Vector2(940, 0)
+output_slots = Array[int]([2463681867277063467, 7204480463571064863, 5091993834016744141, 156772745133817901])
+
+[sub_resource type="Resource" id="Resource_ma21o"]
+script = ExtResource("5_rsykm")
+string_identifier = "ADD_MONEY"
+payload = -5
+position = Vector2(1600, 0)
+output_slots = Array[int]([6313491276682625985])
+
+[sub_resource type="Resource" id="Resource_6ok7f"]
+script = ExtResource("5_rsykm")
+string_identifier = "ADD_MONEY"
+payload = -10
+position = Vector2(1600, 160)
+output_slots = Array[int]([6313491276682625985])
+
+[sub_resource type="Resource" id="Resource_eflw4"]
+script = ExtResource("5_rsykm")
+string_identifier = "ADD_MONEY"
+payload = -30
+position = Vector2(1600, 340)
+output_slots = Array[int]([6313491276682625985])
+
+[sub_resource type="Resource" id="Resource_6kc2m"]
+script = ExtResource("5_rsykm")
+string_identifier = "ADD_MONEY"
+payload = -75
+position = Vector2(1600, 500)
+output_slots = Array[int]([6313491276682625985])
+
+[sub_resource type="Resource" id="Resource_0hht2"]
+script = ExtResource("3_g2sre")
+options = Array[String](["Max", "Rosie", "Rex"])
+line = "What would you like to name the dog?"
+character = ExtResource("3_rsykm")
+position = Vector2(940, 1180)
+output_slots = Array[int]([7046860713662343751, 5239210395987683462, 5483258100658879053])
+
+[sub_resource type="Resource" id="Resource_r8fw2"]
+script = ExtResource("5_rsykm")
+string_identifier = "NAME_DOG"
+payload = "Max"
+position = Vector2(1600, 1180)
+output_slots = Array[int]([6313491276682625985])
+
+[sub_resource type="Resource" id="Resource_f6ywu"]
+script = ExtResource("5_rsykm")
+string_identifier = "NAME_DOG"
+payload = "Rosie"
+position = Vector2(1600, 1340)
+output_slots = Array[int]([6313491276682625985])
+
+[sub_resource type="Resource" id="Resource_ixgtr"]
+script = ExtResource("5_rsykm")
+string_identifier = "NAME_DOG"
+payload = ""
+position = Vector2(1600, 1520)
+output_slots = Array[int]([6313491276682625985])
+
+[sub_resource type="Resource" id="Resource_nqwcc"]
+script = ExtResource("6_wgdfo")
+position = Vector2(1900, 1380)
+output_slots = Array[int]([-1])
+
+[resource]
+script = ExtResource("3_6wm0l")
+start_node_id = 5979355505818601683
+nodes = Dictionary[int, ExtResource("1_8hajb")]({
+156772745133817901: SubResource("Resource_6kc2m"),
+304294671890870297: SubResource("Resource_0hht2"),
+1021333332237699992: SubResource("Resource_ga6f7"),
+1247580582769336010: SubResource("Resource_x73lc"),
+1308700966774384875: SubResource("Resource_wgdfo"),
+2463681867277063467: SubResource("Resource_ma21o"),
+2812427652329307154: SubResource("Resource_gx8l6"),
+5091993834016744141: SubResource("Resource_eflw4"),
+5239210395987683462: SubResource("Resource_f6ywu"),
+5483258100658879053: SubResource("Resource_ixgtr"),
+5979355505818601683: SubResource("Resource_rsykm"),
+6313491276682625985: SubResource("Resource_nqwcc"),
+7046860713662343751: SubResource("Resource_r8fw2"),
+7204480463571064863: SubResource("Resource_6ok7f"),
+7578047972800317945: SubResource("Resource_6wm0l")
+})
+metadata/_custom_type_script = "uid://uuhcmgjgntf8"

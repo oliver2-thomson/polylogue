@@ -70,5 +70,6 @@ text = "Advance Conversation"
 [connection signal="exited" from="Reader" to="Reader" method="_on_exited"]
 [connection signal="node_ready" from="Reader" to="Reader" method="_on_node_ready"]
 [connection signal="polylogue_signal_emitted" from="Reader" to="Reader" method="_on_polylogue_signal_emitted"]
+[connection signal="started" from="Reader" to="Reader" method="_on_started"]
 [connection signal="pressed" from="VBoxContainer/StartButton" to="Reader" method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/AdvanceButton" to="Reader" method="_on_advance_button_pressed"]

@@ -76,3 +76,4 @@ text = "Advance Conversation"
 [connection signal="exited" from="Reader" to="Reader" method="_on_exited"]
 [connection signal="node_ready" from="Reader" to="Reader" method="_on_node_ready"]
 [connection signal="polylogue_signal_emitted" from="Reader" to="Reader" method="_on_polylogue_signal_emitted"]
+[connection signal="started" from="Reader" to="Reader" method="_on_started"]
