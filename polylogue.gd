@@ -7,6 +7,9 @@ const MainPanel = preload("res://addons/polylogue/editor/polylogue_main_panel.ts
 var main_panel_instance: PolylogueMainPanel
 static var instantiable_node_types: Dictionary = {}
 
+const TEMPLATE_SOURCE := "res://addons/polylogue/templates/script_templates"
+const TEMPLATE_TARGET := "res://script_templates"
+
 func _enable_plugin() -> void:
 	pass
 
@@ -15,6 +18,7 @@ func _disable_plugin() -> void:
 
 
 func _enter_tree() -> void:
+	_install_script_templates()
 	main_panel_instance = MainPanel.instantiate()
 	# Add the main panel to the editor's main viewport.
 	EditorInterface.get_editor_main_screen().add_child(main_panel_instance)
@@ -88,4 +92,36 @@ func _test_if_derivitive_of_class(test_class: Script, target_class: Script) -> b
 	
 	return false
 	
-	
+func _install_script_templates() -> void:
+	_copy_dir_recursive(TEMPLATE_SOURCE, TEMPLATE_TARGET)
+	EditorInterface.get_resource_filesystem().scan()
+
+func _copy_dir_recursive(from_path: String, to_path: String) -> void:
+	if not DirAccess.dir_exists_absolute(to_path):
+		DirAccess.make_dir_recursive_absolute(to_path)
+
+	var dir := DirAccess.open(from_path)
+	if dir == null:
+		push_warning("Could not open template source: " + from_path)
+		return
+
+	dir.list_dir_begin()
+	var file_name := dir.get_next()
+
+	while file_name != "":
+		if file_name.begins_with("."):
+			file_name = dir.get_next()
+			continue
+
+		var source := from_path.path_join(file_name)
+		var target := to_path.path_join(file_name)
+
+		if dir.current_is_dir():
+			_copy_dir_recursive(source, target)
+		else:
+			if not FileAccess.file_exists(target):
+				DirAccess.copy_absolute(source, target)
+
+		file_name = dir.get_next()
+
+	dir.list_dir_end()
