@@ -60,3 +60,7 @@ func _on_polylogue_signal_emitted(event_name: String, payload: Variant) -> void:
 
 func _on_branch_requested(condition: String, payload: Variant) -> void:
 	advance(false)
+
+
+func _on_reader_2_branch_requested(condition: String, payload: Variant) -> void:
+	pass # Replace with function body.

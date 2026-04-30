@@ -8,31 +8,12 @@
 [ext_resource type="Resource" uid="uid://2u48ou3ygqpk" path="res://addons/polylogue/demo/demo_characters/character_2.tres" id="5_fug0i"]
 [ext_resource type="Script" uid="uid://rp8pujfgrpwe" path="res://addons/polylogue/shared/nodes/end_node.gd" id="6_mtbne"]
 
-[sub_resource type="Resource" id="Resource_fug0i"]
-script = ExtResource("2_40ao6")
-input_slots = Array[int]([-1])
-output_slots = Array[int]([453373011895907652])
-
 [sub_resource type="Resource" id="Resource_ak8la"]
 script = ExtResource("3_40ao6")
 line = "Character 2 I am VERY annoyed with your actions!"
 character = ExtResource("3_fug0i")
 position = Vector2(280, 0)
 output_slots = Array[int]([5978822556330444455])
-
-[sub_resource type="Resource" id="Resource_mtbne"]
-script = ExtResource("3_40ao6")
-line = "MY actions??? What about YOUR actions!!!"
-character = ExtResource("5_fug0i")
-position = Vector2(940, 0)
-output_slots = Array[int]([7466170489347507392])
-
-[sub_resource type="Resource" id="Resource_ustkr"]
-script = ExtResource("3_40ao6")
-line = "Don't try and turn this around on ME! YOU are the one who said your phone was \"unbreakable\""
-character = ExtResource("5_fug0i")
-position = Vector2(1600, 0)
-output_slots = Array[int]([2722725833338800747])
 
 [sub_resource type="Resource" id="Resource_ca348"]
 script = ExtResource("3_40ao6")
@@ -41,10 +22,29 @@ character = ExtResource("3_fug0i")
 position = Vector2(2260, 0)
 output_slots = Array[int]([6792147586858353156])
 
+[sub_resource type="Resource" id="Resource_fug0i"]
+script = ExtResource("2_40ao6")
+input_slots = Array[int]([-1])
+output_slots = Array[int]([453373011895907652])
+
+[sub_resource type="Resource" id="Resource_mtbne"]
+script = ExtResource("3_40ao6")
+line = "MY actions??? What about YOUR actions!!!"
+character = ExtResource("5_fug0i")
+position = Vector2(940, 0)
+output_slots = Array[int]([7466170489347507392])
+
 [sub_resource type="Resource" id="Resource_qxmor"]
 script = ExtResource("6_mtbne")
 position = Vector2(2900, 0)
 output_slots = Array[int]([-1])
+
+[sub_resource type="Resource" id="Resource_ustkr"]
+script = ExtResource("3_40ao6")
+line = "Don't try and turn this around on ME! YOU are the one who said your phone was \"unbreakable\""
+character = ExtResource("5_fug0i")
+position = Vector2(1600, 0)
+output_slots = Array[int]([2722725833338800747])
 
 [resource]
 script = ExtResource("3_ak8la")

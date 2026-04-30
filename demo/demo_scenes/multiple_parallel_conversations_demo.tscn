@@ -1,0 +1,116 @@
+[gd_scene format=3 uid="uid://c1bd75acldr5p"]
+
+[ext_resource type="Script" uid="uid://b0nneh53ntih2" path="res://addons/polylogue/demo/demo_scenes/reader_exported_fields.gd" id="1_2wgx0"]
+[ext_resource type="Resource" uid="uid://ccxbvhoj6q2fd" path="res://addons/polylogue/demo/demo_conversations/simple_greeting.tres" id="2_wreq5"]
+[ext_resource type="Resource" uid="uid://bj8b4ti5a75i0" path="res://addons/polylogue/demo/demo_conversations/simple_catchup.tres" id="3_nr7am"]
+
+[node name="MultipleParallelConversationsDemo" type="Control" unique_id=294810162]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WarningLabel" type="Label" parent="." unique_id=73976905]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -475.0
+offset_right = 475.0
+offset_bottom = 101.0
+grow_horizontal = 2
+text = "This demo scene is set up to show how the Reader can be used to run several seperate conversations in parallel.
+This could be used to have passive conversations going on in the background of a game.
+Or it could be used to run macro game events like a very basic quest system or trigger points in a story.
+You could even trigger a conversation as a result of a trigger in another!"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=137954249]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 304.0
+offset_right = 312.0
+offset_bottom = 344.0
+size_flags_horizontal = 0
+
+[node name="Reader" type="Node" parent="VBoxContainer" unique_id=156447323 node_paths=PackedStringArray("character_title_label", "dialogue_label", "options_box", "start_button", "advance_button")]
+script = ExtResource("1_2wgx0")
+character_title_label = NodePath("../CharacterTitleLabel")
+dialogue_label = NodePath("../DialogueLabel")
+options_box = NodePath("../OptionsBox")
+start_button = NodePath("../StartButton")
+advance_button = NodePath("../AdvanceButton")
+conversation = ExtResource("2_wreq5")
+metadata/_custom_type_script = "uid://kspoaymatdjf"
+
+[node name="CharacterTitleLabel" type="Label" parent="VBoxContainer" unique_id=454430481]
+visible = false
+layout_mode = 2
+
+[node name="DialogueLabel" type="Label" parent="VBoxContainer" unique_id=1503944965]
+visible = false
+layout_mode = 2
+
+[node name="OptionsBox" type="VBoxContainer" parent="VBoxContainer" unique_id=1689291557]
+visible = false
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=139841101]
+layout_mode = 2
+text = "Start Conversation"
+
+[node name="AdvanceButton" type="Button" parent="VBoxContainer" unique_id=1465784688]
+visible = false
+layout_mode = 2
+text = "Advance Conversation"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=799372094]
+layout_mode = 0
+offset_left = 755.0
+offset_top = 300.0
+offset_right = 908.0
+offset_bottom = 340.0
+
+[node name="Reader2" type="Node" parent="VBoxContainer2" unique_id=622584942 node_paths=PackedStringArray("character_title_label", "dialogue_label", "options_box", "start_button", "advance_button")]
+script = ExtResource("1_2wgx0")
+character_title_label = NodePath("../CharacterTitleLabel")
+dialogue_label = NodePath("../DialogueLabel")
+options_box = NodePath("../OptionsBox")
+start_button = NodePath("../StartButton")
+advance_button = NodePath("../AdvanceButton")
+conversation = ExtResource("3_nr7am")
+metadata/_custom_type_script = "uid://kspoaymatdjf"
+
+[node name="CharacterTitleLabel" type="Label" parent="VBoxContainer2" unique_id=1122106492]
+visible = false
+layout_mode = 2
+
+[node name="DialogueLabel" type="Label" parent="VBoxContainer2" unique_id=1684040567]
+visible = false
+layout_mode = 2
+
+[node name="OptionsBox" type="VBoxContainer" parent="VBoxContainer2" unique_id=1973344090]
+visible = false
+layout_mode = 2
+
+[node name="StartButton" type="Button" parent="VBoxContainer2" unique_id=552056901]
+layout_mode = 2
+text = "Start Conversation"
+
+[node name="AdvanceButton" type="Button" parent="VBoxContainer2" unique_id=1751150975]
+visible = false
+layout_mode = 2
+text = "Advance Conversation"
+
+[connection signal="branch_requested" from="VBoxContainer/Reader" to="VBoxContainer/Reader" method="_on_branch_requested"]
+[connection signal="exited" from="VBoxContainer/Reader" to="VBoxContainer/Reader" method="_on_exited"]
+[connection signal="node_ready" from="VBoxContainer/Reader" to="VBoxContainer/Reader" method="_on_node_ready"]
+[connection signal="polylogue_signal_emitted" from="VBoxContainer/Reader" to="VBoxContainer/Reader" method="_on_polylogue_signal_emitted"]
+[connection signal="started" from="VBoxContainer/Reader" to="VBoxContainer/Reader" method="_on_started"]
+[connection signal="branch_requested" from="VBoxContainer2/Reader2" to="VBoxContainer2/Reader2" method="_on_branch_requested"]
+[connection signal="exited" from="VBoxContainer2/Reader2" to="VBoxContainer2/Reader2" method="_on_exited"]
+[connection signal="node_ready" from="VBoxContainer2/Reader2" to="VBoxContainer2/Reader2" method="_on_node_ready"]
+[connection signal="polylogue_signal_emitted" from="VBoxContainer2/Reader2" to="VBoxContainer2/Reader2" method="_on_polylogue_signal_emitted"]
+[connection signal="started" from="VBoxContainer2/Reader2" to="VBoxContainer2/Reader2" method="_on_started"]
