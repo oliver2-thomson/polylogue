@@ -29,7 +29,7 @@ func _on_reader_node_ready(node: PolylogueNodeBase) -> void:
 	reset_ui()
 	
 	if node is SpeechNode:
-		var character: Character = node.character
+		var character: Character = node.get_character()
 		character_name_label.text = character.name + ": "
 	
 	if node is LineNode:
