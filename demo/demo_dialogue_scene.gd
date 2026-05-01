@@ -7,22 +7,12 @@ extends Control
 @onready var dialogue_line_label: Label = $VBoxContainer/DialoguePlayingContainer/HBoxContainer/DialogueLineLabel
 @onready var options_container: VBoxContainer = $VBoxContainer/DialoguePlayingContainer/HBoxContainer/OptionsContainer
 @onready var advance_dialogue_button: Button = $VBoxContainer/DialoguePlayingContainer/AdvanceDialogueButton
-@onready var toggleable_button: CheckButton = $VBoxContainer2/ToggleableButton
-@onready var coins_label: Label = $VBoxContainer2/CoinsLabel
 
-@export var coins: int = 50
-
-func _ready() -> void:
-	_refresh_coins_label()
-	
-func _refresh_coins_label():
-	coins_label.text = "Coins: " + str(coins)
 
 func _on_play_dialogue_button_pressed() -> void:
-	reader.start()
 	play_dialogue_button.hide()
 	dialogue_playing_container.show()
-
+	reader.start()
 
 func _on_reader_exited(reason: String) -> void:
 	dialogue_playing_container.hide()
@@ -32,19 +22,15 @@ func _on_reader_exited(reason: String) -> void:
 func _on_advance_dialogue_button_pressed() -> void:
 	reader.advance()
 
-
 func _on_reader_polylogue_signal_emitted(event_name: String, payload: Variant) -> void:
 	print("event: {0} triggered with payload: {1}".format([event_name, payload]))
-	if event_name == "SPEND_MONEY" and payload is int:
-		coins -= payload
-		_refresh_coins_label()
 
 func _on_reader_node_ready(node: PolylogueNodeBase) -> void:
 	reset_ui()
 	
 	if node is SpeechNode:
 		var character: Character = node.character
-		character_name_label.text = character.name
+		character_name_label.text = character.name + ": "
 	
 	if node is LineNode:
 		dialogue_line_label.text = node.get_line()
@@ -67,10 +53,4 @@ func reset_ui():
 
 
 func _on_reader_branch_requested(condition: String, payload: Variant) -> void:
-	if condition == "GET_TOGGLE_BUTTON_STATUS":
-		reader.advance(toggleable_button.button_pressed)
-		return
-	
-	if condition == "COIN_TOTAL_GREATER_OR_EQUAL_THAN" and payload is int:
-		reader.advance(coins >= payload)
-		return
+	reader.advance(false)
